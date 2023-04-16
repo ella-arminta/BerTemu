@@ -7273,6 +7273,7 @@ CREATE TABLE `orang_hilang` (
   `tinggi` int(11) NOT NULL,
   `keterangan` text NOT NULL,
   `tanggal_hilang` date NOT NULL,
+  `nomor_telepon` varchar(12) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
