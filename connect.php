@@ -16,9 +16,19 @@ $options = [
 
 try {
     $conn = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
+} catch (PDOException $e) {
     echo "Error Connect to Database Msg: ".$e->getMessage();
 }
 
 session_start();
+
+// $session_login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
+
+// if (isset($session_login))
+// {
+//     $fetch_user = "SELECT * FROM `users` WHERE email = ?";
+//     $fetch_user = $connect->prepare($fetch_user);
+//     $fetch_user->execute([ $session_login ]);
+//     $fetch_user = $fetch_admin->fetch();
+// }
 ?>
