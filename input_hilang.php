@@ -1,8 +1,3 @@
-<?php
-require('connect.php');
-$data = ("SELECT * FROM orang_hilang");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,82 +37,93 @@ $data = ("SELECT * FROM orang_hilang");
 </head>
 
 <body>
-<button type="Button" class="button1" style = "background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
-< BACK
-</button>
+<a href="tabel_hilang.php">
+    <button type="Button" class="button1" style = "background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
+        < BACK
+    </button>
+</a>
 
-<form>
+<form method="POST">
 <div class="row">
 <h4 class="center" style="font-weight: bold; font-family:'Gill Sans MT'">Input form orang hilang </h4>
-    <div class="col">
-        <div class="form-group">
-            <label for="foto" style="font-family: 'Gill Sans MT';">Foto</label> <br>
-            <input type="file" id="image-input">
-            <img id="image-preview" src="#" alt="Preview Image">
-        </div>
+<div class="col">
+    <div class="form-group">
+        <label for="foto" style="font-family: 'Gill Sans MT';">Foto</label> <br>
+        <input type="file" style="margin-bottom: 2%" id="image-input" onchange="previewImage(event)">
+        <img id="image-preview" src="#" alt="Preview Image" style="max-width: 100%; height: auto;">
     </div>
-    <div class = "col mb-3">
-        <label for="kotaHilang" style="font-family: 'Gill Sans MT';"> Kota Hilang </label>
-        <input type="text" class="form-control">
-        <label for="tanggalHilang" style="font-family: 'Gill Sans MT';"> Tanggal Hilang </label>
-        <input type="date" id="date-input" name="date-input" class="form-control">
-    </div>
+</div>
 
-    <div class = "row">
-    <div class="form-group mb-3">
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('image-preview');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+    <div class = "col mb-2">
+        <label for="id_kota" style="font-family: 'Gill Sans MT';"> Kota Hilang </label>
+        <input type="text" class="form-control" id="id_kota" name="id_kota">
+        <label for="tanggalHilang" style="font-family: 'Gill Sans MT';"> Tanggal Hilang </label>
+        <input type="date" id="tanggal_hilang" name="tanggal_hilang" class="form-control">
+        <div class="form-group mb-3">
         <label for="nama" style="font-family: 'Gill Sans MT';"> Nama orang hilang</label>
-        <input type="text" class="form-control">
-    </div>
+        <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap">
         <label for="tinggiBadan" style="font-family: 'Gill Sans MT';"> Tinggi Badan </label>
         <div class="input-group mb-3">
-            <input type="number" id="height-input" name="height-input" class="form-control">
+            <input type="number" id="tinggi" name="tinggi" class="form-control">
             <div class="input-group-append">
                 <span class="input-group-text">cm</span>
             </div>
         </div>
         <div class="form-group mb-3">
-            <label for="kota" style="font-family: 'Gill Sans MT';"> Kota </label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="form-group mb-3">
-            <label for="jenisKelamin" style="font-family: 'Gill Sans MT';">Jenis Kelamin</label>
-            <select class="form-control" id="jenisKelamin">
+            <label for="jenis_kelamin" style="font-family: 'Gill Sans MT';">Jenis Kelamin</label>
+            <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
             <option style="font-family: 'Gill Sans MT';">Perempuan</option>
             <option style="font-family: 'Gill Sans MT';">laki-laki</option>
             </select>
         </div>
         <div class="form-group mb-3">
             <label for="umur" style="font-family: 'Gill Sans MT';"> Umur </label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="umur_hilang" id="umur_hilang">
         </div>
         <div class="form-group mb-3">
             <label for="phone" style="font-family: 'Gill Sans MT';">Nomor Telepon yang bisa dihubungi</label>
-            <input type="tel" class="form-control" id="phone" name="phone">
+            <input type="tel" class="form-control" id="nomor_telepon" name="nomor_telepon">
         </div>
+    </div>
+    </div>
+
+    <div class = "row">
         <div class="form-group mb-3">
             <label for="keterangan" style="font-family: 'Gill Sans MT';">Keterangan tambahan</label>
-            <textarea class="form-control" id="keterangan" rows="3"></textarea>
+            <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
         </div>
     </div>
 </div>
+<p>
+    <input type="submit" class = "button1"  style = "background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'" name="submit" id="submit" value="Submit">
+</p>
+
+<?php
+require "connect.php";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id_kota = $_POST['id_kota'];
+    $tanggal_hilang = $_POST['tanggal_hilang'];
+    $nama_lengkap = $_POST['nama_lengkap'];
+    $tinggi = $_POST['tinggi'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
+    $umur_hilang = $_POST['umur_hilang'];
+    $nomor_telepon = $_POST['nomor_telepon'];
+    $keterangan = $_POST['keterangan'];
+
+    $stmt =$conn->prepare("INSERT INTO orang_hilang (id_kota, tanggal_hilang, nama_lengkap, tinggi, jenis_kelamin, umur_hilang, nomor_telepon, keterangan) 
+    VALUES ('$id_kota', '$tanggal_hilang', '$nama_lengkap', '$tinggi', '$jenis_kelamin', '$umur_hilang', '$nomor_telepon', '$keterangan')");
+}
+?>
 </form>
-
-<button type="Button" class="button1" style = "background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
-SUBMIT
-</button>
 </body>
-
 </html>
-
-<script>
-$(document).ready(function() {
-  $('#image-input').on('change', function(event) {
-    var file = event.target.files[0];
-    var reader = new FileReader();
-    reader.onload = function() {
-      $('#image-preview').attr('src', reader.result);
-    }
-    reader.readAsDataURL(file);
-  });
-});
-</script>
