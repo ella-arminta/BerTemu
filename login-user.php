@@ -118,24 +118,7 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
         </div>
 
         <!-- Menu -->
-        <nav class="navbar fixed-bottom navbar-expand-lg mx-auto">
-            <div class="collapse navbar-collapse justify-content-center">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index-user.php"><img src="assets/home-icon.png" class="icon"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="assets/explore-icon.png" class="icon"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="assets/chat-icon.png" class="icon"></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#"><img src="assets/setting-icon.png" class="icon"></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <?php include 'bottombar.php' ?>
     </div>
 </body>
 </html>
