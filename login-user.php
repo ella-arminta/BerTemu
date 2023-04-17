@@ -1,9 +1,10 @@
 <?php
-require "connect.php";
+require 'connect.php';
 
 if (isset($_SESSION['login']))
 {
-    header('index-user.php');
+    echo "tes";
+    header('location: settings-user.php');
 }
     
 if (isset($_POST['login']) && $_POST['login'] == "1")
@@ -25,8 +26,8 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
 
     else
     {
-        $_SESSION['login'] = $fetch_users['id'];
-        header('location: index-user.php');
+        $_SESSION['login'] = $fetch_users['id_user'];
+        header('location: settings-user.php');
     }
 }
 ?>
@@ -34,7 +35,7 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Contoh Navbar dengan Bootstrap</title>
+	<title>Log-in</title>
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -121,7 +122,7 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="assets/home-icon.png" class="icon"></a>
+                        <a class="nav-link" href="index-user.php"><img src="assets/home-icon.png" class="icon"></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><img src="assets/explore-icon.png" class="icon"></a>
