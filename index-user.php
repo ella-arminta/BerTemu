@@ -1,7 +1,5 @@
 <?php
     require "connect.php";
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home User</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -73,7 +71,7 @@
                 <ul class="navbar-nav position-absolute top-0 end-0"> 
                     <!-- gagal top right -->
                     <li class="nav-item">
-                        <a class="nav-link py-0 my-0" href="#"><img src="assets/bell-icon.png" class="icon"></a>
+                        <a class="nav-link py-0 my-0" href="#"><img src="assets/bell-icon.png" class="icon" style="height: 45px; width: auto;"></a>
                     </li>
                 </ul>
             </div>
@@ -102,7 +100,7 @@
                         <a class="nav-link" href="#"><img src="assets/chat-icon.png" class="icon"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="assets/setting-icon.png" class="icon"></a>
+                        <a class="nav-link" href="settings-user.php"><img src="assets/setting-icon.png" class="icon"></a>
                     </li>
                 </ul>
             </div>
