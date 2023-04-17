@@ -1,113 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Workspace</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    <script type="text/javascript" src="../MDB5/js/mdb.min.js"></script>
-
-    <style>
-        body{
-            background-color: rgb(235,250,253);
-            margin-left: 2%;
-            margin-right: 2%;
-        }
-        .button1{
-            border: none;
-            border-radius: 12%;
-            margin-top: 2%;
-            margin-bottom: 2%;
-            padding: 7px 16px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 18px;
-        }
-        .center {
-            margin: auto;
-            width: 100%;
-            padding-left: 40%;
-            margin-bottom: 3%;
-        }
-    </style>
-
-       
-</head>
-
-<body>
-<a href="tabel_hilang.php">
-    <button type="Button" class="button1" style = "background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
-        < BACK
-    </button>
-</a>
-
-<form method="POST">
-<div class="row">
-<h4 class="center" style="font-weight: bold; font-family:'Gill Sans MT'">Input form orang hilang </h4>
-<div class="col">
-    <div class="form-group">
-        <label for="foto" style="font-family: 'Gill Sans MT';">Foto</label> <br>
-        <input type="file" style="margin-bottom: 2%" id="image-input" onchange="previewImage(event)">
-        <img id="image-preview" src="#" alt="Preview Image" style="max-width: 100%; height: auto;">
-    </div>
-</div>
-
-<script>
-    function previewImage(event) {
-        var reader = new FileReader();
-        reader.onload = function() {
-            var output = document.getElementById('image-preview');
-            output.src = reader.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
-    <div class = "col mb-2">
-        <label for="id_kota" style="font-family: 'Gill Sans MT';"> Kota Hilang </label>
-        <input type="text" class="form-control" id="id_kota" name="id_kota">
-        <label for="tanggalHilang" style="font-family: 'Gill Sans MT';"> Tanggal Hilang </label>
-        <input type="date" id="tanggal_hilang" name="tanggal_hilang" class="form-control">
-        <div class="form-group mb-3">
-        <label for="nama" style="font-family: 'Gill Sans MT';"> Nama orang hilang</label>
-        <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap">
-        <label for="tinggiBadan" style="font-family: 'Gill Sans MT';"> Tinggi Badan </label>
-        <div class="input-group mb-3">
-            <input type="number" id="tinggi" name="tinggi" class="form-control">
-            <div class="input-group-append">
-                <span class="input-group-text">cm</span>
-            </div>
-        </div>
-        <div class="form-group mb-3">
-            <label for="jenis_kelamin" style="font-family: 'Gill Sans MT';">Jenis Kelamin</label>
-            <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-            <option style="font-family: 'Gill Sans MT';">Perempuan</option>
-            <option style="font-family: 'Gill Sans MT';">laki-laki</option>
-            </select>
-        </div>
-        <div class="form-group mb-3">
-            <label for="umur" style="font-family: 'Gill Sans MT';"> Umur </label>
-            <input type="text" class="form-control" name="umur_hilang" id="umur_hilang">
-        </div>
-        <div class="form-group mb-3">
-            <label for="phone" style="font-family: 'Gill Sans MT';">Nomor Telepon yang bisa dihubungi</label>
-            <input type="tel" class="form-control" id="nomor_telepon" name="nomor_telepon">
-        </div>
-    </div>
-    </div>
-
-    <div class = "row">
-        <div class="form-group mb-3">
-            <label for="keterangan" style="font-family: 'Gill Sans MT';">Keterangan tambahan</label>
-            <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
-        </div>
-    </div>
-</div>
-<p>
-    <input type="submit" class = "button1"  style = "background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'" name="submit" id="submit" value="Submit">
-</p>
-
 <?php
 require "connect.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -119,11 +9,147 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $umur_hilang = $_POST['umur_hilang'];
     $nomor_telepon = $_POST['nomor_telepon'];
     $keterangan = $_POST['keterangan'];
+    var_dump($_POST);
 
-    $stmt =$conn->prepare("INSERT INTO orang_hilang (id_kota, tanggal_hilang, nama_lengkap, tinggi, jenis_kelamin, umur_hilang, nomor_telepon, keterangan) 
+    $stmt = $conn->prepare("INSERT INTO orang_hilang (id_kota, tanggal_hilang, nama_lengkap, tinggi, jenis_kelamin, umur_hilang, nomor_telepon, keterangan) 
     VALUES ('$id_kota', '$tanggal_hilang', '$nama_lengkap', '$tinggi', '$jenis_kelamin', '$umur_hilang', '$nomor_telepon', '$keterangan')");
+    $stmt->execute();
+
+    header('Location: tabel_hilang.php');
 }
+
+$stmt = $conn->prepare("SELECT * FROM `regencies`");
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Workspace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="../MDB5/js/mdb.min.js"></script>
+
+    <style>
+        body {
+            background-color: rgb(235, 250, 253);
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+
+        .button1 {
+            border: none;
+            border-radius: 12%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            padding: 7px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+        }
+
+        .center {
+            margin: auto;
+            width: 100%;
+            padding-left: 40%;
+            margin-bottom: 3%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <a href="tabel_hilang.php">
+        <button type="Button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
+            < BACK </button>
+    </a>
+
+    <form method="post">
+        <div class="row">
+            <h4 class="center" style="font-weight: bold; font-family:'Gill Sans MT'">Input form orang hilang </h4>
+            <div class="col">
+                <div class="form-group">
+                    <label for="foto" style="font-family: 'Gill Sans MT';">Foto</label> <br>
+                    <input type="file" style="margin-bottom: 2%" id="image-input" onchange="previewImage(event)">
+                    <img id="image-preview" src="#" alt="Preview Image" style="max-width: 100%; height: auto;">
+                </div>
+            </div>
+
+            <script>
+                function previewImage(event) {
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                        var output = document.getElementById('image-preview');
+                        output.src = reader.result;
+                    }
+                    reader.readAsDataURL(event.target.files[0]);
+                }
+            </script>
+            <div class="col mb-2">
+                <label for="id_kota" style="font-family: 'Gill Sans MT';"> Kota Hilang </label>
+                <!-- <input type="text" class="form-control" id="id_kota" name="id_kota"> -->
+                <select name="id_kota" id="id_kota">
+                    <?php foreach ($result as $row){?>
+                        <option value="<?= $row['province_id'] ?>"><?= $row['name'] ?></option>
+                    <?php } ?>
+                </select> <br>
+
+                <label for="tanggalHilang" style="font-family: 'Gill Sans MT';"> Tanggal Hilang </label>
+                <input type="date" id="tanggal_hilang" name="tanggal_hilang" class="form-control">
+                <div class="form-group mb-3">
+                    <label for="nama" style="font-family: 'Gill Sans MT';"> Nama orang hilang</label>
+                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap">
+                    <label for="tinggiBadan" style="font-family: 'Gill Sans MT';"> Tinggi Badan </label>
+                    <div class="input-group mb-3">
+                        <input type="number" id="tinggi" name="tinggi" class="form-control">
+                        <div class="input-group-append">
+                            <span class="input-group-text">cm</span>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="jenis_kelamin" style="font-family: 'Gill Sans MT';">Jenis Kelamin</label>
+                        <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                            <option style="font-family: 'Gill Sans MT';">Perempuan</option>
+                            <option style="font-family: 'Gill Sans MT';">laki-laki</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="umur" style="font-family: 'Gill Sans MT';"> Umur </label>
+                        <input type="text" class="form-control" name="umur_hilang" id="umur_hilang">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="phone" style="font-family: 'Gill Sans MT';">Nomor Telepon yang bisa dihubungi</label>
+                        <input type="tel" class="form-control" id="nomor_telepon" name="nomor_telepon">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group mb-3">
+                    <label for="keterangan" style="font-family: 'Gill Sans MT';">Keterangan tambahan</label>
+                    <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+        <input type="submit" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'" name="submit" id="submit" value="Submit">
+    </form>
+    <script>
+        // $(document).ready(function() {
+        //     $.ajax({
+        //         url: "loadKota.php",
+        //         method: "POST",
+        //         success: function(result) {
+        //             $("#id_kota").html(result);
+        //             alert(result);
+        //         }
+        //     });
+        // });
+    </script>
 </body>
+
 </html>
