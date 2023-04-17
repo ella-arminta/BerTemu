@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "../connect.php";
 $stmt = $conn->prepare("SELECT * FROM `orang_hilang`");
 $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -95,8 +95,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?= $row['tanggal_hilang'] ?></td>
           <td><?= $row['nomor_telepon'] ?></td>
           <td>
-            <a href="page_edit.php">
-              <button type="button" class="btn" id="<?= $row['id_hilang'] ?>" onclick="getData(this)" style="background-color: rgb(57, 79, 110); color: white; font-family: 'Gill Sans MT';">
+            <a href="page_edit.php?id=<?= $row['id_hilang'] ?>">
+              <button type="button" class="btn" id="<?= $row['id_hilang'] ?>"  style="background-color: rgb(57, 79, 110); color: white; font-family: 'Gill Sans MT';">
                 <i class="fas fa-edit" style="font-size: 24px;"></i>
               </button>
             </a>
