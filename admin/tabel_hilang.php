@@ -73,6 +73,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <th scope="col" style="font-family: 'Gill Sans MT';">Keterangan umum</th>
         <th scope="col" style="font-family: 'Gill Sans MT';">Tanggal Hilang</th>
         <th scope="col" style="font-family: 'Gill Sans MT';">Nomor Telepon</th>
+        <th scope="col" style="font-family: 'Gill Sans MT';">Foto</th>
         <th scope="col" style="font-family: 'Gill Sans MT';">Action</th>
       </tr>
     </thead>
@@ -94,6 +95,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?= $row['keterangan'] ?></td>
           <td><?= $row['tanggal_hilang'] ?></td>
           <td><?= $row['nomor_telepon'] ?></td>
+          <td><?= $row['foto'] ?></td>
+
           <td>
             <a href="page_edit.php?id=<?= $row['id_hilang'] ?>">
               <button type="button" class="btn" id="<?= $row['id_hilang'] ?>"  style="background-color: rgb(57, 79, 110); color: white; font-family: 'Gill Sans MT';">

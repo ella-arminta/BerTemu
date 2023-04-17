@@ -10,17 +10,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nomor_telepon = $_POST['nomor_telepon'];
     $keterangan = $_POST['keterangan'];
 
-    $stmt = $conn->prepare("INSERT INTO orang_hilang (id_kota, tanggal_hilang, nama_lengkap, tinggi, jenis_kelamin, umur_hilang, nomor_telepon, keterangan, foto) 
-    VALUES ('$id_kota', '$tanggal_hilang', '$nama_lengkap', '$tinggi', '$jenis_kelamin', '$umur_hilang', '$nomor_telepon', '$keterangan', '$foto')");
-    $stmt->execute();
+    $foto = $_FILES['foto'];
+    $target_dir = "../assets/img/orang_hilang/";
+    $target_file = $target_dir . basename($foto['name']);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // header('Location: tabel_hilang.php');
+    if (move_uploaded_file($foto['tmp_name'], $target_file)) {
+        $stmt = $conn->prepare("INSERT INTO orang_hilang (id_kota, tanggal_hilang, nama_lengkap, tinggi, jenis_kelamin, umur_hilang, nomor_telepon, keterangan, foto) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $target_file]);
+    }
 }
-$foto = $_FILES['foto'];
-$target_dir = "uploads/"; // specify the directory where the file will be saved
-$target_file = $target_dir . basename($_FILES['foto']['name']); // specify the file path and name
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-var_dump($foto);
+
 
 $stmt = $conn->prepare("SELECT * FROM `regencies`");
 $stmt->execute();
