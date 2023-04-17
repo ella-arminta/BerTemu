@@ -1,0 +1,25 @@
+/* css template */
+body{
+    width: 100%;
+    overflow: auto;
+    margin:auto;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.712);
+}
+.container-hp{
+    margin: auto;
+    background-color: #eef9fc;
+    max-width: 780px;
+    min-height: 100vh;
+    position: relative;
+}
+
+.content {
+    border-radius: 20px;
+}
+
+.fixed-top {
+    max-width: 780px;
+    position: fixed;
+    background: #475a7c !important;
+}
