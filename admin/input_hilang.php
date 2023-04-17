@@ -26,6 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $stmt = $conn->prepare("SELECT * FROM `regencies`");
 $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if(isset($_POST['submit_button'])){
+    header('Location: tabel_hilang.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,7 +147,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <input type="submit" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'" name="submit" id="submit" value="Submit">
+        <input type="submit" name="submit_button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'" name="submit" id="submit" value="Submit">
     </form>
 </body>
 

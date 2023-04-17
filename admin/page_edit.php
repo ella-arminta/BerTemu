@@ -2,6 +2,7 @@
 require "../connect.php";
 
 $id = $_GET["id"];
+
 $stmt = $conn->prepare("SELECT * FROM `orang_hilang` WHERE id_hilang = ?");
 $stmt->execute([$id]);
 $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -9,6 +10,32 @@ $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $conn->prepare("SELECT * FROM `regencies`");
 $stmt->execute();
 $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id_kota = $_POST['id_kota'];
+    $tanggal_hilang = $_POST['tanggal_hilang'];
+    $nama_lengkap = $_POST['nama_lengkap'];
+    $tinggi = $_POST['tinggi'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
+    $umur_hilang = $_POST['umur_hilang'];
+    $nomor_telepon = $_POST['nomor_telepon'];
+    $keterangan = $_POST['keterangan'];
+
+    $foto = $_FILES['foto'];
+    $target_dir = "../assets/img/orang_hilang/";
+    $target_file = $target_dir . basename($foto['name']);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    $stmt = $conn->prepare("UPDATE orang_hilang SET id_kota = ?, tanggal_hilang = ?, nama_lengkap = ?, tinggi =?, jenis_kelamin = ?, umur_hilang = ?, nomor_telepon =? , keterangan = ?, foto = ? 
+        WHERE id_hilang = ?");
+    $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $target_file, $id]);
+}
+
+if(isset($_POST['submit_button'])){
+    header('Location: tabel_hilang.php');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -58,12 +85,12 @@ $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label for="foto">Foto</label>
-                    <input type="file" class="form-control-file" id="image-input" onchange="previewImage(event)">
+                    <input type="file" class="form-control-file" id="foto" name="foto" onchange="previewImage(event)">
                     <img id="image-preview" src="#" alt="Preview Image" style="max-width: 100%; height: auto;">
                 </div>
             </div>
@@ -122,7 +149,7 @@ $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <textarea class="form-control" id="keterangan" name="keterangan" rows="3"><?= $result1[0]['keterangan'] ?></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="btn" style="background-color:rgb(57,79,110); color:white; font-family:'Gill Sans MT'">Submit</button>
+                    <button type="submit" name="submit_button" class="btn" style="background-color:rgb(57,79,110); color:white; font-family:'Gill Sans MT'">Submit</button>
                 </div>
             </div>
         </div>

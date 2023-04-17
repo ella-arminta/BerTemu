@@ -53,6 +53,40 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     display: inline-block;
     font-size: 18px;
   }
+
+  body {
+    background-color: #eef9fc;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  /* css template */
+  .fixed-top {
+    position: fixed;
+    background: #475a7c !important;
+  }
+
+  /* css menu-user */
+  .fixed-bottom {
+    position: fixed;
+    background: #475a7c !important;
+  }
+
+  .icon {
+    width: 40px;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .active {
+    background: #546F96;
+  }
+
+  .pembatas-navbar {
+    height: 100px;
+    width: 100%;
+  }
 </style>
 
 <body>
@@ -99,7 +133,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
           <td>
             <a href="page_edit.php?id=<?= $row['id_hilang'] ?>">
-              <button type="button" class="btn" id="<?= $row['id_hilang'] ?>"  style="background-color: rgb(57, 79, 110); color: white; font-family: 'Gill Sans MT';">
+              <button type="button" class="btn" id="<?= $row['id_hilang'] ?>" style="background-color: rgb(57, 79, 110); color: white; font-family: 'Gill Sans MT';">
                 <i class="fas fa-edit" style="font-size: 24px;"></i>
               </button>
             </a>
@@ -109,6 +143,21 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </tbody>
   </table>
   <?php $conn = null; ?>
+  <nav class="navbar fixed-bottom navbar-expand-lg mx-auto">
+    <div class="collapse navbar-collapse justify-content-center">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="../index-admin.php"><img src="../assets/home-icon.png" class="icon"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><img src="../assets/acc-icon.png" class="icon"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="input_hilang.php"><img src="../assets/upload-icon.png" class="icon"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </body>
 <script>
   $("button").click(function() {
