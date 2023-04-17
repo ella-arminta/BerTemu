@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "../connect.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_kota = $_POST['id_kota'];
     $tanggal_hilang = $_POST['tanggal_hilang'];
@@ -9,18 +9,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $umur_hilang = $_POST['umur_hilang'];
     $nomor_telepon = $_POST['nomor_telepon'];
     $keterangan = $_POST['keterangan'];
-    var_dump($_POST);
 
-    $stmt = $conn->prepare("INSERT INTO orang_hilang (id_kota, tanggal_hilang, nama_lengkap, tinggi, jenis_kelamin, umur_hilang, nomor_telepon, keterangan) 
-    VALUES ('$id_kota', '$tanggal_hilang', '$nama_lengkap', '$tinggi', '$jenis_kelamin', '$umur_hilang', '$nomor_telepon', '$keterangan')");
-    $stmt->execute();
+    $foto = $_FILES['foto'];
+    $target_dir = "../assets/img/orang_hilang/";
+    $target_file = $target_dir . basename($foto['name']);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    header('Location: tabel_hilang.php');
+    if (move_uploaded_file($foto['tmp_name'], $target_file)) {
+        $stmt = $conn->prepare("INSERT INTO orang_hilang (id_kota, tanggal_hilang, nama_lengkap, tinggi, jenis_kelamin, umur_hilang, nomor_telepon, keterangan, foto) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $target_file]);
+    }
 }
+
 
 $stmt = $conn->prepare("SELECT * FROM `regencies`");
 $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if(isset($_POST['submit_button'])){
+    header('Location: tabel_hilang.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,13 +80,13 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             < BACK </button>
     </a>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="row">
             <h4 class="center" style="font-weight: bold; font-family:'Gill Sans MT'">Input form orang hilang </h4>
             <div class="col">
                 <div class="form-group">
                     <label for="foto" style="font-family: 'Gill Sans MT';">Foto</label> <br>
-                    <input type="file" style="margin-bottom: 2%" id="image-input" onchange="previewImage(event)">
+                    <input type="file" style="margin-bottom: 2%" id="foto" name="foto" onchange="previewImage(event)">
                     <img id="image-preview" src="#" alt="Preview Image" style="max-width: 100%; height: auto;">
                 </div>
             </div>
@@ -94,8 +104,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="col mb-2">
                 <label for="id_kota" style="font-family: 'Gill Sans MT';"> Kota Hilang </label>
                 <!-- <input type="text" class="form-control" id="id_kota" name="id_kota"> -->
-                <select name="id_kota" id="id_kota">
-                    <?php foreach ($result as $row){?>
+                <select class="form-control" name="id_kota" id="id_kota">
+                    <?php foreach ($result as $row) { ?>
                         <option value="<?= $row['province_id'] ?>"><?= $row['name'] ?></option>
                     <?php } ?>
                 </select> <br>
@@ -137,20 +147,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <input type="submit" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'" name="submit" id="submit" value="Submit">
+        <input type="submit" name="submit_button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'" name="submit" id="submit" value="Submit">
     </form>
-    <script>
-        // $(document).ready(function() {
-        //     $.ajax({
-        //         url: "loadKota.php",
-        //         method: "POST",
-        //         success: function(result) {
-        //             $("#id_kota").html(result);
-        //             alert(result);
-        //         }
-        //     });
-        // });
-    </script>
 </body>
 
 </html>

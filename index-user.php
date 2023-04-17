@@ -17,6 +17,9 @@
 </head>
 <body>
     <div class="container-hp">
+
+        <div class="pembatas-navbar"></div>
+
         <!-- navbar top -->
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0 my-0 mx-auto">
             <div class="collapse navbar-collapse position-relative">
@@ -33,13 +36,15 @@
         </nav>
         
         <div class="container justify-content-center">
-            <div class="content row bg-secondary p-3 m-3 pt-5" style="height: 400px;">
-            </div>
-            <div class="content row bg-secondary p-3 m-3 pt-5" style="height: 400px;">
-            </div>
-            <div class="content row bg-secondary p-3 m-3 pt-5" style="height: 400px;">
+            <div class="mx-3">
+                <div class="bg-secondary content mb-3" style="height: 500px;"></div>
+                <div class="bg-secondary content mt-4" style="height: 500px;"></div>
             </div>
         </div>
+
+        <div class="pembatas-navbar"></div>
+
+        <div class="pembatas-navbar"></div>
 
         <?php require_once 'bottombar.php'; ?>
     </div>

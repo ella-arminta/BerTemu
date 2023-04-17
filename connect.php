@@ -24,6 +24,8 @@ try {
 
 $session_login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
 
+$session_loginAdmin = isset($_SESSION['loginAdmin']) ? $_SESSION['loginAdmin'] : '';
+
 // if (isset($session_login))
 // {
 //     $fetch_user = "SELECT * FROM `users` WHERE email = ?";
