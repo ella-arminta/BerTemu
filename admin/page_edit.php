@@ -12,6 +12,12 @@ $stmt = $conn->prepare("SELECT * FROM `regencies`");
 $stmt->execute();
 $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+if (isset($_POST['delete_button'])) {
+    $id_hilang =  $result1[0]['id_hilang'];;
+    $stmt = $conn->prepare("DELETE FROM orang_hilang WHERE id_hilang = ?");
+    $stmt->execute([$id_hilang]);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_kota = $_POST['id_kota'];
     $tanggal_hilang = $_POST['tanggal_hilang'];
@@ -21,51 +27,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $umur_hilang = $_POST['umur_hilang'];
     $nomor_telepon = $_POST['nomor_telepon'];
     $keterangan = $_POST['keterangan'];
-
-    // var_dump($_POST);
-    
     $foto = $_FILES['foto'];
-    if ($_FILES['foto']['error'] == 4 || ($_FILES['foto']['size'] == 0 && $_FILES['foto']['error'] == 0))
-    {
-        // cover_image is empty (and not an error), or no file was uploaded
+    if ($_FILES['foto']['error'] == 4 || ($_FILES['foto']['size'] == 0 && $_FILES['foto']['error'] == 0)) {
         $stmt = $conn->prepare("UPDATE orang_hilang SET id_kota = ?, tanggal_hilang = ?, nama_lengkap = ?, tinggi =?, jenis_kelamin = ?, umur_hilang = ?, nomor_telepon =? , keterangan = ?
         WHERE id_hilang = ?");
-       $berhasil =  $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $id]);
-       if($berhasil){
-        header('Location: tabel_hilang.php');
-       }else{
-        
-        echo '<script>alert("gagal 234")</script>';
-       }
-       
-    }else{
+        $berhasil =  $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $id]);
+        if ($berhasil) {
+            header('Location: tabel_hilang.php');
+        } else {
+
+            echo '<script>alert("gagal 234")</script>';
+        }
+    } else {
         $rename = time() . '-' . basename($_FILES["foto"]["name"]);
         $target_dir = "../assets/img/orang_hilang/";
         $target_file = $target_dir . basename($rename);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    
+
         if (move_uploaded_file($foto['tmp_name'], $target_file)) {
             $stmt = $conn->prepare("UPDATE orang_hilang SET id_kota = ?, tanggal_hilang = ?, nama_lengkap = ?, tinggi =?, jenis_kelamin = ?, umur_hilang = ?, nomor_telepon =? , keterangan = ?, foto = ? 
             WHERE id_hilang = ?");
-           $berhasil =  $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $target_file, $id]);
-           if($berhasil){
-            header('Location: tabel_hilang.php');
-           }else{
-            
-            echo '<script>alert("gagal")</script>';
-           }
+            $berhasil =  $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $target_file, $id]);
+            if ($berhasil) {
+                header('Location: tabel_hilang.php');
+            } else {
+
+                echo '<script>alert("gagal")</script>';
+            }
         }
     }
 }
 if (isset($_POST['submit_button'])) {
-    // header('Location: tabel_hilang.php');
-    // exit;
-}
-
-if (isset($_POST['delete_button'])) {
-    $id_hilang = $result1[0]['id_hilang'];
-    $stmt = $conn->prepare("DELETE FROM orang_hilang WHERE id_hilang = ? ");
-    $stmt->execute([$id_hilang]);
     header('Location: tabel_hilang.php');
     exit;
 }
@@ -100,23 +92,41 @@ if (isset($_POST['delete_button'])) {
     .btn:focus {
         background-color: rgb(236, 108, 79);
     }
+
+    .button1 {
+        border: none;
+        border-radius: 12%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        padding: 7px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+    }
 </style>
 
 <body>
-    <div class="container-fluid py-2">
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" id ="button_hilang" class="btn" style=" color:white; font-family:'Gill Sans MT'; margin-right:3%">Hilang</button>
-                    <button type="button" id ="button_pencarian" class="btn" style=" color:white; font-family:'Gill Sans MT';margin-right:3%">Pencarian</button>
-                    <button type="button" id ="button_selesai" class="btn" style=" color:white; font-family:'Gill Sans MT';margin-right:3%">Selesai</button>
-                    <button type="button" class="btn" id="delete_button" name="delete_button" style=" background-color: rgb(236,108,79);color:white; font-family:'Gill Sans MT';margin-right:3%" value="<?php echo $id_hilang; ?>">
-                        <i class="fa fa-trash"></i>
-                    </button>
+    <a href="tabel_hilang.php">
+        <button type="Button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
+            < BACK </button>
+    </a>
+    <form method="post">
+        <div class="container-fluid py-2">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" id="button_hilang" class="btn" style=" color:white; font-family:'Gill Sans MT'; margin-right:3%">Hilang</button>
+                        <button type="button" id="button_pencarian" class="btn" style=" color:white; font-family:'Gill Sans MT';margin-right:3%">Pencarian</button>
+                        <button type="button" id="button_selesai" class="btn" style=" color:white; font-family:'Gill Sans MT';margin-right:3%">Selesai</button>
+                        <button type=" submit" class="btn" id="delete_button" name="delete_button" style=" background-color: rgb(236,108,79);color:white; font-family:'Gill Sans MT';margin-right:3%" value="<?php echo $id_hilang; ?>">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 
     <form method="post" enctype="multipart/form-data">
         <div class="row">
@@ -195,53 +205,53 @@ if (isset($_POST['delete_button'])) {
             }
             reader.readAsDataURL(event.target.files[0]);
         }
-            $(document).ready(function() {
-                $("#button_hilang").click(function() {
-                    $.ajax({
-                        type: "POST",
-                        url: "setStatusHilang.php",
-                        data: {
-                            status: 'hilang',
-                            id: '<?= $_GET['id']; ?>',
-                        },
-                        success: function(response) {
-                            if(response == 'success'){
-                                $('#button_hilang').css('background-color','white');
-                            }
-                        }
-                    });
-                });
-                $("#button_pencarian").click(function() {
-                    $.ajax({
-                        type: "POST",
-                        url: "setStatusHilang.php",
-                        data: {
-                            status: 'pencarian',
-                            id: '<?= $_GET['id']; ?>',
-                        },
-                        success: function(response) {
-                            if(response == 'success'){
-                                $('#button_pencarian').css('background-color','white');
-                            }
-                        }
-                    });
-                });
-                $("#button_selesai").click(function() {
-                    $.ajax({
-                        type: "POST",
-                        url: "setStatusHilang.php",
+        $(document).ready(function() {
+            $("#button_hilang").click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "setStatusHilang.php",
+                    data: {
+                        status: 'hilang',
                         id: '<?= $_GET['id']; ?>',
-                        data: {
-                            status: 'selesai',
-                        },
-                        success: function(response) {
-                            if(response == 'success'){
-                                $('#button_selesai').css('background-color','white');
-                            }
+                    },
+                    success: function(response) {
+                        if (response == 'success') {
+                            $('#button_hilang').css('background-color', 'white');
                         }
-                    });
+                    }
                 });
             });
+            $("#button_pencarian").click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "setStatusHilang.php",
+                    data: {
+                        status: 'pencarian',
+                        id: '<?= $_GET['id']; ?>',
+                    },
+                    success: function(response) {
+                        if (response == 'success') {
+                            $('#button_pencarian').css('background-color', 'white');
+                        }
+                    }
+                });
+            });
+            $("#button_selesai").click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "setStatusHilang.php",
+                    id: '<?= $_GET['id']; ?>',
+                    data: {
+                        status: 'selesai',
+                    },
+                    success: function(response) {
+                        if (response == 'success') {
+                            $('#button_selesai').css('background-color', 'white');
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
