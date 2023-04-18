@@ -13,12 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $foto = $_FILES['foto'];
     $target_dir = "../assets/img/orang_hilang/";
     $target_file = $target_dir . basename($foto['name']);
+    $img_path = basename($foto['name']);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     if (move_uploaded_file($foto['tmp_name'], $target_file)) {
         $stmt = $conn->prepare("INSERT INTO orang_hilang (id_kota, tanggal_hilang, nama_lengkap, tinggi, jenis_kelamin, umur_hilang, nomor_telepon, keterangan, foto) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $target_file]);
+        $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $img_path]);
     }
 }
 

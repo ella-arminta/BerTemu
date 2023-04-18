@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     gap: 4%;
+    z-index: 1030;
 }
 .outer-input{
     width: auto;
@@ -40,6 +41,7 @@
     border-radius: 15px;
     min-height: 25vh;
     padding-bottom: 10px;
+    margin-bottom: 30px;
 }
 .mycard > div:nth-child(1){
     padding-top: 10px;
