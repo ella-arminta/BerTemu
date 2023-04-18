@@ -175,7 +175,7 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Kata Sandi</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="password">
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="password">
                     </div>
                     <div class="mb-3 uploadFoto">
                         <img src="" class="foto_ktp">

@@ -108,6 +108,7 @@ img{
     border-radius: 15px;
     overflow-x: hidden;
     overflow-y:auto;
+    background-color: white;
 }
 .comment{
     width: 100%;

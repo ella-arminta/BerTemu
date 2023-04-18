@@ -1,5 +1,38 @@
 <?php
     require "connect.php";
+    if(!isset($_GET['id'])){
+        header('Location: explore.php');
+        // echo 'gagal2';
+    }
+    $id = $_GET['id'];
+    $stmt = $conn->prepare("SELECT * FROM orang_hilang where id_hilang=?");
+    $stmt->execute([$id]);
+    if($stmt->rowCount() <= 0){
+        // echo 'gagal';
+        header('Location: explore.php');
+    }
+    $orang = $stmt->fetch();
+    $namaKota = '';
+    $stmt = $conn->prepare('SELECT * FROM regencies where id=?');
+    $berhasil = $stmt->execute([$orang['id_kota']]);
+    if($berhasil){
+        $nama = $stmt->fetch();
+        $namaKota = $nama['name'];  
+    }
+    function formatDate($mydate) {
+        $date = new DateTime($mydate);
+        $options = [
+            'locale' => 'id-ID',
+            'timezone' => 'Asia/Jakarta',
+            'weekday' => 'long',
+            'day' => 'numeric',
+            'month' => 'long',
+            'year' => 'numeric'
+        ];
+        $formatter = new IntlDateFormatter($options['locale'], NULL, NULL, $options['timezone'], NULL, $options['weekday'] . ', ' . $options['day'] . ' ' . $options['month'] . ' ' . $options['year']);
+        $formattedDate = $formatter->format($date);
+        return $formattedDate;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,67 +61,135 @@
         </div>
         <div class="card-container">
             <div class="mycard">
-                <div>Jumat, 9 April 2024</div>
+                <div></div>
                 <div class="row">
                     <div class="col-5">
-                        <img src="assets/img/orang_hilang/dummy1.jpg" alt="">
+                        <img src="assets/img/orang_hilang/<?= $orang['foto'] ?>" alt="">
                     </div>
                     <div class="col-7">
-                        <h1>Nicholas Suhendar</h1>
-                        <div>Surabaya</div>
+                        <h1><?= $orang['nama_lengkap']?></h1>
+                        <div><?= $namaKota ?></div>
+                        <div><?= $orang['umur_hilang'] ?> tahun</div>
                         <div style="display:flex;align-items:center;">
-                            <div style="margin-right:15px;">Laki-Laki</div>
-                            <div>162 cm</div>
+                            <div style="margin-right:15px;"><?= strtoupper($orang['jenis_kelamin']) === 'P' ? 'Perempuan' : 'Laki-laki'; ?></div>
+                            <div><?= $orang['tinggi'] ?> cm</div>
                         </div>
-                        <div style="cursor:pointer;">082141942965 <i class="fa-solid fa-copy"></i></div>
+                        <div style="cursor:pointer;"><?= $orang['nomor_telepon'] ?> <i class="fa-solid fa-copy"></i></div>
                     </div>
                 </div>
                 <div style="height:20px;width:100%;"></div>
                 <div class="ket row">
                     <div>Keterangan Tambahan</div>
-                    <div>Berambut hitam. Mamanya bla bal. Punya tahi lalat. ksdfsdkf</div>
+                    <div><?= $orang['keterangan'] ?></div>
                 </div>
             </div>
         </div>
-        <div style="height:30px;width:100%;"></div>
+        <div style="height:30px;width:100%;"><span style="padding-left:calc(30px + 5%);padding-bottom:7px;">Kolom Diskusi</span></div>
         <div class="comment-container">
             <div class="comments">
-                <div class="comment">
-                    <div class="pp"><img src="assets/img/orang_hilang/dummy1.jpg" alt=""></div>
-                    <div>
-                        <h1>Januar Putera</h1>
-                        <p>Tadi siang, aku lihat di jembatan merah</p>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="pp"><img src="assets/img/orang_hilang/dummy1.jpg" alt=""></div>
-                    <div>
-                        <h1>Januar Putera</h1>
-                        <p>Tadi siang, aku lihat di jembatan merah</p>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="pp"><img src="assets/img/orang_hilang/dummy1.jpg" alt=""></div>
-                    <div>
-                        <h1>Januar Putera</h1>
-                        <p>Tadi siang, aku lihat di jembatan merah</p>
-                    </div>
-                </div>
+                <?php 
+                $stmt = $conn->prepare("SELECT * FROM komentar where status = 1");
+                $stmt->execute();
+                $count = 0;
+                while($kom = $stmt->fetch()):
+                    $count+=1;
+                ?>
+                <?php endwhile; ?>
+                <?php if($count == 0): ?>
+                    <div style="display:block;margin:auto;color:#425B7F;text-align:center;">Belum ada diskusi</div>
+                <?php endif; ?>
             </div>
         </div>
         <div style="height:30px;width:100%;"></div>
         <div class="form-floating" style="width:90%;margin:auto;">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 90px"></textarea>
+            <textarea class="form-control" placeholder="Ikut Berdiskusi" id="komentar" name="komentar" style="height: 90px"></textarea>
             <label for="floatingTextarea2Disabled">Ikut Berdiskusi</label>
         </div>
         <div style="height:22px;width:100%;"></div>
-        <button type="Button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;width:80px;display:block;float:right;margin-right:5%;">Log-in</button>
-        <!-- <button type="Button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;width:80px;display:block;float:right;margin-right:5%;">Send</button> -->
+        <?php if(!isset($_SESSION['login'])):?>
+        <button type="Button" class="button1" onclick="window.location.href= 'login-user.php'" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;width:80px;display:block;float:right;margin-right:5%;">Log-in</button>
+        <?php else: ?>
+        <button type="Button" onclick="sendKomentar()" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;width:80px;display:block;float:right;margin-right:5%;">Send</button>
+        <?php endif; ?>
         <div style="height:26px;width:100%;"></div>
         <div style="height:82px;width:100%;"></div>
         <!-- navbar top -->
         <?php include 'bottombar.php' ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+        })
+        function sendKomentar(){
+            $.ajax({
+                type: "POST",
+                url: "api/sendKomentar.php",
+                data: {
+                    isi : $('#komentar').val(),
+                    id_forum : '<?= $_GET['id'] ?>',
+                },
+                success: function (response) {
+                    if(response =='blm login'){
+                        alert('Silahkan login terlebih dahulu untuk ikut berdiskusi')
+                    }else if(response == 'isi kosong'){
+                        alert('Silahkan mengisi kolom diskusi terlebih dahulu')
+                    }else if(response == 'success'){
+                        alert('Komentar berhasil dikirimkan')
+                    }else{
+                        alert("Terjadi kesalahan.")
+                    }
+                }
+            });
+        }
+        function isJSON(str) {
+            try {
+                JSON.parse(str);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+        function getKomentar(){
+            $.ajax({
+                type: "POST",
+                url: "api/getKomentar.php",
+                data: {
+                    id_forum : '<?= $_GET['id'] ?>',
+                },
+                success: function (response) {
+                    if(isJSON(response)){
+                        comments = JSON.parse(response);
+                        divcomm = ``;
+                        counter = 0;
+                        for (var com of comments) {
+                            counter+=1;
+                            divcomm += `
+                            <div class="comment">
+                                <div class="pp"><img src="`+com.foto_diri+`" alt=""></div>
+                                <div>
+                                    <h1>`+com.nama_lengkap+`</h1>
+                                    <p>`+com.isi+`</p>
+                                </div>
+                            </div>
+                            `
+                        }
+                        $('.comments').html(divcomm);
+                        if(counter == 0){
+                            $('.comments').html(`<div style="display:block;margin:auto;color:#425B7F;text-align:center;">Belum ada diskusi</div>`);
+                        }
+                    }else{
+                        console.log('error json komentar')
+                    }   
+                }
+            });
+        }
+        setInterval(function() {
+            getKomentar()
+        }, 500);
+        
+    </script>
 </body>
 </html>

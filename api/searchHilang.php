@@ -94,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $and = true;
             $max_tgl = new DateTime();
             $max_tgl = DateTime::createFromFormat('Y-m-d', $filter['max_tgl']);
+            $max_tgl = $max_tgl->format('Y-m-d');
             array_push($hasilFilter,$max_tgl);
         }
         if(!empty($filter['min_tgl']) && $filter['min_tgl'] != ''){
@@ -108,6 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $and = true;
             $min_tgl = new DateTime();
             $min_tgl = DateTime::createFromFormat('Y-m-d', $filter['min_tgl']);
+            $min_tgl = $min_tgl->format('Y-m-d');
             array_push($hasilFilter,$min_tgl);
         }
     }
