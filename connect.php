@@ -14,7 +14,6 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
-session_start();
 
 try {
     $conn = new PDO($dsn, $user, $pass, $options);
@@ -22,6 +21,7 @@ try {
     echo "Error Connect to Database Msg: ".$e->getMessage();
 }
 
+session_start();
 $session_login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
 
 $session_loginAdmin = isset($_SESSION['loginAdmin']) ? $_SESSION['loginAdmin'] : '';

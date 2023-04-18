@@ -219,7 +219,7 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
                     <?=isset($msgNIK) ? '<div class="alert alert-danger">'.$msgNIK.'</div>' : ''?>
                     <div class="mb-3">
                         <label class="form-label">Kata Sandi</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="password">
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="password">
                     </div>
                     <?=isset($msgPassword) ? '<div class="alert alert-danger">'.$msgPassword.'</div>' : ''?>
                     <div class="mb-3">

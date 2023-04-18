@@ -1,5 +1,5 @@
 <?php
-include "connection.php";
+include "../connect.php";
 $sqlprovinsi="select id,nama_provinsi from provinsi  order by nama_provinsi asc ";
 $resprovinsi   = mysqli_query($con,$sqlprovinsi);
 $checkprovinsi = mysqli_num_rows($resprovinsi);
