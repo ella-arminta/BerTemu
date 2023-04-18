@@ -11,8 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $keterangan = $_POST['keterangan'];
 
     $foto = $_FILES['foto'];
+    $rename = time() . '-' . basename($_FILES["foto"]["name"]);
     $target_dir = "../assets/img/orang_hilang/";
-    $target_file = $target_dir . basename($foto['name']);
+    $target_file = $target_dir . basename($rename);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     if (move_uploaded_file($foto['tmp_name'], $target_file)) {
@@ -147,7 +148,7 @@ if(isset($_POST['submit_button'])){
                 </div>
             </div>
         </div>
-        <input type="submit" name="submit_button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'" name="submit" id="submit" value="Submit">
+        <input type="submit" name="submit_button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'"  id="submit" value="Submit">
     </form>
 </body>
 
