@@ -26,7 +26,7 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
 
     else
     {
-        $_SESSION['login'] = $fetch_users['id_user'];
+        $_SESSION['login'] = $fetch_users;
         header('location: settings-user.php');
     }
 }
@@ -37,46 +37,13 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
 <head>
 	<title>Log-in</title>
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    /* css template */
-    body{
-        width: 100%;
-        overflow: auto;
-        margin:auto;
-        min-height: 100vh;
-        background-color: rgba(0, 0, 0, 0.712);
-    }
-    .container-hp{
-        margin: auto;
-        background-color: #eef9fc;
-        max-width: 500px;
-        min-width: 500px;
-        min-height: 100vh;
-        position: relative;
-    }
-
-    /* css menu-user */
-    .fixed-bottom {
-        max-width: 500px;
-        min-width: 500px;
-        position: fixed;
-        background: #475a7c !important;
-    }
-    .icon {
-        width: 40px;
-        height: auto;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-    .active {
-        background: #546F96;
-    }
-
     .form-control {
         background: white !important;
         color: #141414;
@@ -86,17 +53,21 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
         background: #475a7c !important;
         color: white;
     }
-
+    .pembatas-navbar {
+        width: 100%;
+        height: 20%;
+    }
 </style>
 <body>
     <div class="container-hp">
+        <div class="pembatas-navbar"></div>
         <div class="mx-auto" style="padding-right: 80px; padding-left: 80px; padding-top: 10px;">
             <div class="row d-flex justify-content-center">
-                <img src="assets/logo-kotak.png" class="mt-5" style="width: 240px">
+                <img src="assets/logo-kotak.png" class="mt-5" style="width: 40%">
             </div>
             <div class="row d-flex justify-content-center">
                 <!-- form -->
-                <form method="post" style="width: 300px;">
+                <form method="post" style="width: 60%;">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="email">
@@ -118,7 +89,7 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
         </div>
 
         <!-- Menu -->
-        <?php include 'bottombar.php' ?>
+        <?php require_once 'bottombar.php'; ?>
     </div>
 </body>
 </html>

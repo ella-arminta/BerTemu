@@ -3,21 +3,21 @@ require "connect.php";
 
 if (isset($_POST['signup']) && $_POST['signup'] == "1")
 {
-    if (isset($_POST['name']))
+    if (isset($_POST['name']) && $_POST['name'] != "")
     {
         $name = $_POST['name'];
-        if (isset($_POST['email']))
+        if (isset($_POST['email']) && $_POST['email'] != "")
         {
             $email = $_POST['email'];
-            if (isset($_POST['nik']))
+            if (isset($_POST['nik']) && $_POST['nik'] != "")
             {
                 $nik = $_POST['nik'];
-                if (isset($_POST['password']))
+                if (isset($_POST['password']) && $_POST['password'] != "")
                 {
                     $password = $_POST['password'];
-                    if (isset($_FILES['imageDiri']))
+                    if (isset($_FILES['imageDiri']) && $_FILES['imageDiri'] != "")
                     {
-                        if (isset($_FILES['imageKTP']))
+                        if (isset($_FILES['imageKTP']) && $_FILES['imageKTP'] != "")
                         {
                             // nama file foto-foto
                             $foto_diri = 'foto-diri-'.$email;
@@ -93,53 +93,11 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
 	<title>Sign-up</title>
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <style>
-        /* css template */
-        body{
-            width: 100%;
-            overflow: auto;
-            margin:auto;
-            min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.712);
-        }
-        .container-hp{
-            margin: auto;
-            background-color: #eef9fc;
-            max-width: 500px;
-            min-width: 500px;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* css menu-user */
-        .fixed-bottom {
-            max-width: 500px;
-            min-width: 500px;
-            position: fixed;
-            background: #475a7c !important;
-        }
-        .icon {
-            width: 40px;
-            height: auto;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-        .active {
-            background: #546F96;
-        }
-
-        .form-control {
-            background: white !important;
-            color: #141414;
-            border-radius: 12px;
-        }
-        .btn {
-            background: #475a7c !important;
-            color: white;
-        }
-
         /* css input image */
         .image-input-container {
             border-radius: 15px;
@@ -239,7 +197,7 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
     <div class="container-hp">
         <div class="mx-auto" style="padding-right: 80px; padding-left: 80px; padding-top: 50px;">
             <div class="row start-0">
-                <H2>Buat Akun</H2>
+                <H1>Buat Akun</H1>
             </div>
             <div class="row d-flex justify-content-center">
                 <!-- form -->
@@ -248,18 +206,22 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
                         <label class="form-label">Nama</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="name">
                     </div>
+                    <?=isset($msgName) ? '<div class="alert alert-danger">'.$msgName.'</div>' : ''?>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="email">
                     </div>
+                    <?=isset($msgEmail) ? '<div class="alert alert-danger">'.$msgEmail.'</div>' : ''?>
                     <div class="mb-3">
                         <label class="form-label">NIK</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="nik">
                     </div>
+                    <?=isset($msgNIK) ? '<div class="alert alert-danger">'.$msgNIK.'</div>' : ''?>
                     <div class="mb-3">
                         <label class="form-label">Kata Sandi</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="password">
                     </div>
+                    <?=isset($msgPassword) ? '<div class="alert alert-danger">'.$msgPassword.'</div>' : ''?>
                     <div class="mb-3">
                         <label for="image">Foto Diri:</label>
                         <div class="image-input-container" onclick="document.getElementById('image').click()">
@@ -272,6 +234,7 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
                             </div>
                         </div>
                     </div>
+                    <?=isset($msgDiri) ? '<div class="alert alert-danger">'.$msgDiri.'</div>' : ''?>
                     <div class="mb-5">
                         <label for="imageKTP">Foto KTP:</label>
                         <div class="image-input-container" onclick="document.getElementById('imageKTP').click()">
@@ -284,10 +247,10 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
                             </div>
                         </div>
                     </div>
+                    <?=isset($msgKTP) ? '<div class="alert alert-danger">'.$msgKTP.'</div>' : ''?>
                     <div class="mb-3">
                         <button class="btn" name="signup" value="1" style="width: 100%"><h5>Daftar</h3></button>
                     </div>
-                    <?=isset($msgSukses) ? '<div class="alert alert-danger">'.$msgSukses.'</div>' : ''?>
                 </form>
             </div>
         </div>
@@ -295,24 +258,7 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
         <div class="pembatas-navbar"></div>
 
         <!-- Menu -->
-        <nav class="navbar fixed-bottom navbar-expand-lg mx-auto">
-            <div class="collapse navbar-collapse justify-content-center">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index-user.php"><img src="assets/home-icon.png" class="icon"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="assets/explore-icon.png" class="icon"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="assets/chat-icon.png" class="icon"></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#"><img src="assets/setting-icon.png" class="icon"></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <?php require_once 'bottombar.php'; ?>
     </div>
 </body>
 </html>

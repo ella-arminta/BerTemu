@@ -43,45 +43,12 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
 <head>
 	<title>Sign-up</title>
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <style>
-        /* css template */
-        body{
-            width: 100%;
-            overflow: auto;
-            margin:auto;
-            min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.712);
-        }
-        .container-hp{
-            margin: auto;
-            background-color: #eef9fc;
-            max-width: 500px;
-            min-width: 500px;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* css menu-user */
-        .fixed-bottom {
-            max-width: 500px;
-            min-width: 500px;
-            position: fixed;
-            background: #475a7c !important;
-        }
-        .icon {
-            width: 40px;
-            height: auto;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-        .active {
-            background: #546F96;
-        }
-
         .form-control {
             background: white !important;
             color: #141414;
@@ -114,7 +81,6 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
             display: block;
             width: 200px;
         }
-
     </style>
     <script>
        // display foto
