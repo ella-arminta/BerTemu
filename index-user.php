@@ -15,6 +15,27 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+<style>
+    .content {
+        width: 100%;
+        height: auto;
+        overflow-y: hidden !important;
+        position: relative;
+        background: white;
+        box-shadow: -2px 10px 24px 1px rgba(0,0,0,0.10);
+    }
+
+    .img-content {
+        max-width: 100%;
+        max-height: 100%;
+        display: absolute; /* remove extra space below image */
+    }
+
+    .pembatas-navbar {
+        width: 100%;
+        height: 120px;
+    }
+</style>
 <body>
     <div class="container-hp">
 
@@ -24,25 +45,27 @@
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0 my-0 mx-auto">
             <div class="collapse navbar-collapse position-relative">
                 <ul class="navbar-nav mx-auto">
-                    <a class="nav-link py-0 my-0" href="#"><img src="assets/logo-horizontal.png" style="height: 70px"></a>
+                    <a class="nav-link py-0 my-0" href="#"><img src="assets/logo-horizontal.png" style="height: 80px"></a>
                 </ul>
                 <ul class="navbar-nav position-absolute top-0 end-0"> 
                     <!-- gagal top right -->
                     <li class="nav-item">
-                        <a class="nav-link py-0 my-0" href="#"><img src="assets/bell-icon.png" class="icon" style="height: 45px; width: auto;"></a>
+                        <a class="nav-link py-0 my-0" href="#"><img src="assets/bell-icon.png" class="icon" style="height: 60px; width: auto;"></a>
                     </li>
                 </ul>
             </div>
         </nav>
         
         <div class="container justify-content-center">
-            <div class="mx-3">
-                <div class="bg-secondary content mb-3" style="height: 500px;"></div>
-                <div class="bg-secondary content mt-4" style="height: 500px;"></div>
+            <div class="mx-5">
+                <div class="content content1 mb-5">
+                    <img class="img-content" src="assets/content-01.jpg" alt="">
+                </div>
+                <div class="content conten2 mt-5">
+                    <img class="img-content" src="assets/content-02.jpg" alt="">
+                </div>
             </div>
         </div>
-
-        <div class="pembatas-navbar"></div>
 
         <div class="pembatas-navbar"></div>
 

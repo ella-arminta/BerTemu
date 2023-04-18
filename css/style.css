@@ -4,7 +4,7 @@ body{
     overflow: auto;
     margin:auto;
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.712);
+    background-color: rgba(0, 0, 0, 0.712) !important;
 }
 .container-hp{
     margin: auto;
