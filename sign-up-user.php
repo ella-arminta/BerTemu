@@ -146,7 +146,7 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
             width: 100%;
         }
         .btn {
-            background: #475a7c !important;
+            background: #387CF3 !important;
             color: white;
         }
     </style>

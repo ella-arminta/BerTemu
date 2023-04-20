@@ -28,6 +28,8 @@ if (empty($session_login))
             background: white;
             width: 100%;
             border-radius: 15px;
+            border-top: 2px solid #1f2446;
+            border-bottom: 2px solid #1f2446;
         }
         .foto {
             border-radius: 15px;

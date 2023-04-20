@@ -50,19 +50,14 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
         border-radius: 12px;
     }
     .btn {
-        background: #475a7c !important;
+        background: #387CF3 !important;
         color: white;
-    }
-    .pembatas-navbar {
-        width: 100%;
-        height: 20%;
     }
 </style>
 <body>
     <div class="container-hp">
-        <div class="pembatas-navbar"></div>
-        <div class="mx-auto" style="padding-right: 80px; padding-left: 80px; padding-top: 10px;">
-            <div class="row d-flex justify-content-center">
+        <div class="mx-auto align-self-center">
+            <div class="row d-flex justify-content-center mb-4">
                 <img src="assets/logo-kotak.png" class="mt-5" style="width: 40%">
             </div>
             <div class="row d-flex justify-content-center">
@@ -78,11 +73,11 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
                         <input type="password" class="form-control" id="exampleInputPassword1" name="password">
                     </div>
                     <?=isset($msgPass) ? '<div class="alert alert-danger">'.$msgPass.'</div>' : ''?>
-                    <div class="d-grid gap-2 d-flex justify-content-center">
-                        <button class="btn" name="login" value="1" style="width: 100%">Login</button>
+                    <div class="d-grid gap-2 d-flex justify-content-center mb-2">
+                        <button class="btn" name="login" value="1" style="width: 100%; border-radius: 12px;">Login</button>
                     </div>
                     <div class="d-grid gap-2 d-flex justify-content-center">
-                        <p>Belum punya akun? <a href="sign-up-user.php" style="color: #dc7357">Buat Akun</a></p>
+                        <p>Belum punya akun? <a href="sign-up-user.php" style="color: #dc7357; font-size: 18px !important;">Buat Akun</a></p>
                     </div>
                 </form>
             </div>

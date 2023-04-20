@@ -22,7 +22,8 @@
         overflow-y: hidden !important;
         position: relative;
         background: white;
-        box-shadow: -2px 10px 24px 1px rgba(0,0,0,0.10);
+        border-top: 2px solid #1f2446;
+        border-bottom: 2px solid #1f2446;
     }
 
     .img-content {

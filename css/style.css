@@ -4,11 +4,13 @@ body{
     overflow: auto;
     margin:auto;
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.712) !important;
+    background-color: rgba(174, 215, 237, 0.712) !important;
+    font-size: 20px;
+    transition: 0.3s;
 }
 .container-hp{
     margin: auto;
-    background-color: #eef9fc;
+    background-color: #ffffff;
     max-width: 780px;
     min-height: 100vh;
     position: relative;
@@ -21,5 +23,5 @@ body{
 .fixed-top {
     max-width: 780px;
     position: fixed;
-    background: #475a7c !important;
+    background: #387CF3 !important;
 }
