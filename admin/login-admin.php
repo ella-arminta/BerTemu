@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../connect.php';
 
 if (isset($_SESSION['loginAdmin']))
 {
@@ -71,22 +71,21 @@ if (isset($_POST['loginAdmin']) && $_POST['loginAdmin'] == "1")
     }
 
     .pembatas-navbar {
-        height: 100px;
+        height: 50px;
         width: 100%;
     }
 
 </style>
 <body>
     <div class="pembatas-navbar"></div>
-    
-    <div class="mx-auto" style="padding-right: 80px; padding-left: 80px;">
-        <div class="row d-flex justify-content-center">
-            <img src="assets/logo-kotak.png" class="mt-5" style="width: 240px">
+    <div class="mx-auto justify-content-center align-items-center" style="padding-right: 80px; padding-left: 80px;">
+        <div class="row justify-content-center align-items-center">
+            <img src="../assets/logo-kotak.png" class="mt-5" style="width: 240px">
         </div>
-        <div class="row d-flex justify-content-center">
+        <div class="row justify-content-center align-items-center">
             <h2 style="color: #475a7c;"><b>ADMIN</b></h2>
         </div>
-        <div class="row d-flex justify-content-center">
+        <div class="row justify-content-center align-items-center">
             <!-- form -->
             <form method="post" style="width: 300px;">
                 <div class="mb-3">

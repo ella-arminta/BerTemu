@@ -90,6 +90,14 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </style>
 
 <body>
+    <!-- navbar top -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0 my-0 mx-auto">
+      <div class="position-relative mx-auto">
+          <img class= "mx-auto" src="../assets/logo-horizontal.png" style="height: 70px">
+      </div>
+    </nav>
+    <br>
+
   <a href="input_hilang.php">
     <button type="Button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
       + ADD
@@ -146,13 +154,13 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <nav class="navbar fixed-bottom navbar-expand-lg mx-auto">
     <div class="collapse navbar-collapse justify-content-center">
       <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index-admin.php"><img src="../assets/home-icon.png" class="icon"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="acc-user-admin.php#"><img src="../assets/acc-icon.png" class="icon"></a>
+        </li>
         <li class="nav-item active">
-          <a class="nav-link" href="../index-admin.php"><img src="../assets/home-icon.png" class="icon"></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><img src="../assets/acc-icon.png" class="icon"></a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="input_hilang.php"><img src="../assets/upload-icon.png" class="icon"></a>
         </li>
       </ul>

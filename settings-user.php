@@ -35,9 +35,7 @@ if (empty($session_login))
             height: auto;
         }
         .alert {
-            position: absolute;
-            bottom: 0;
-            width: auto;
+            width: 80%;
         }
     </style>
 <body>
@@ -46,20 +44,27 @@ if (empty($session_login))
         <div class="container justify-content-center px-5 m-2">
             <div class="white p-3 mb-3">
                 <div class="row mx-1">
-                    <div class="col-4 p-2">
+                    <div class="col-lg-4 col-12 p-2">
                         <img class="foto" src="<?php echo $session_login['foto_diri'] ?>" alt="">
                     </div>
-                    <div class="col-8 p-2">
+                    <div class="col-lg-8 col-12 p-2">
                         <div class="data">
                             <div style="font-size: 30px;"><b><?php echo $session_login['nama_lengkap'] ?></b></div>
                             <div style="font-size: 20px;"><?php echo $session_login['email'] ?></div>
                             <div style="font-size: 20px;"><?php echo $session_login['nik'] ?></div>
                             <?php
-                            if ($session_login['status'] == "1") {
-                                echo '<div class="alert bg-success text-light mt-3"><b>TER-VERIFIKASI</b></div>';
+                            $sql = 'SELECT status FROM users WHERE id_user = :i';
+                            $stmt =  $conn->prepare($sql);
+                            $stmt->execute(array(
+                                ":i" => $session_login['id_user']
+                            ));
+                            $status = $stmt->fetchAll();
+
+                            if ($status[0]['status'] == 1) {
+                                echo '<div class="alert bg-success text-light mt-3 justify-content-center"><b>AKUN TER-VERIFIKASI</b></div>';
                             }
                             else {
-                                echo '<div class="alert bg-danger text-light mt-3"><b>BELUM TERVERIFIKASI</b></div>';
+                                echo '<div class="alert bg-danger text-light mt-3 justify-content-center"><b>AKUN BELUM TERVERIFIKASI</b></div>';
                             }
                             ?>
                         </div>

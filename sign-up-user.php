@@ -82,7 +82,7 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
         }
     }
     else {
-        $msgName = 'Nama belum dimasukkan';
+        $msgName = 'Nama belum dimasukkan!';
     }
 }
 ?>
