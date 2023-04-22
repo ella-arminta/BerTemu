@@ -43,13 +43,20 @@
         <div class="pembatas-navbar"></div>
 
         <!-- navbar top -->
-        <nav class="navbar fixed-top py-0 my-0 mx-auto" style="max-width: 780px;">
-            <div class="mx-auto">
-                <a class="py-0 my-0" href="#"><img src="assets/logo-horizontal.png" style="height: 80px"></a>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0 my-0 mx-auto">
+            <div>
+            <ul class="navbar-nav mx-auto">
+                    <a class="nav-link py-0 my-0" href="#"><img src="assets/logo-horizontal.png" style="height: 80px"></a>
+                    <!-- gagal top right -->
+                    <li class="nav-item">
+                        <a class="nav-link py-0 my-0" href="#"><img src="assets/bell-icon.png" class="icon" style="height: 60px; width: auto;"></a>
+                    </li>
+                </ul>
+                <!-- <ul class="navbar-nav position-absolute top-0 end-0"> 
+                    
+                </ul> -->
             </div>
-            <div class="navbar-text">
-                <a href="#"><img src="assets/bell-icon.png" class="icon" style="height: 60px; width: auto;"></a>
-            </div>
+                
         </nav>
         
         <div class="container justify-content-center" style="max-width: 700px;">

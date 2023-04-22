@@ -146,15 +146,19 @@
                 success: function (response) {
                     if(isJSON(response)){
                         data = JSON.parse(response);
-                        console.log('HAII'+data.kota)
-                        $('#kota').val(data.kota);
-                        $('#kelamin').val(data.kelamin.toUpperCase());
-                        $('#min-umur').val(data.min_umur);
-                        $('#max-umur').val(data.max_umur);
-                        $('#min-tinggi').val(data.min_tinggi);
-                        $('#max-tinggi').val(data.max_tinggi);
-                        $('#min-tgl').val(data.min_tgl);
-                        $('#max-tgl').val(data.max_tgl);
+                        if(response[0] == 'kosong'){
+
+                        }else{
+                            console.log('HAII'+data.kota)
+                            $('#kota').val(data.kota);
+                            $('#kelamin').val(data.kelamin.toUpperCase());
+                            $('#min-umur').val(data.min_umur);
+                            $('#max-umur').val(data.max_umur);
+                            $('#min-tinggi').val(data.min_tinggi);
+                            $('#max-tinggi').val(data.max_tinggi);
+                            $('#min-tgl').val(data.min_tgl);
+                            $('#max-tgl').val(data.max_tgl);
+                        }
                     }else{
                         alert("Something went wrong")
                     }

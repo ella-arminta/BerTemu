@@ -35,13 +35,15 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Log-in</title>
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<!-- custom css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="css/style.css">
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+ <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <style>
     .form-control {
@@ -53,16 +55,20 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
         background: #387CF3 !important;
         color: white;
     }
+    .outer{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
 </style>
 <body>
     <div class="container-hp">
-        <div class="mx-auto align-self-center">
-            <div class="row d-flex justify-content-center mb-4">
-                <img src="assets/logo-kotak.png" class="mt-5" style="width: 40%">
-            </div>
-            <div class="row d-flex justify-content-center">
-                <!-- form -->
-                <form method="post" style="width: 60%;">
+        <div class="outer">
+            <img src="assets/logo-kotak.png" class="mt-5" style="width: 40%">
+            <br>
+            <!-- form -->
+            <form method="post" style="width: 60%;">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="email">
@@ -80,7 +86,6 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
                         <p>Belum punya akun? <a href="sign-up-user.php" style="color: #dc7357; font-size: 18px !important;">Buat Akun</a></p>
                     </div>
                 </form>
-            </div>
         </div>
 
         <!-- Menu -->
