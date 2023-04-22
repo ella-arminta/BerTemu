@@ -1,4 +1,4 @@
-<?
+<?php
 include '../connect.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_hilang = $_POST['id'];
@@ -21,4 +21,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'gagal';
     }
 }
-?>
