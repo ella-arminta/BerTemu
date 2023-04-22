@@ -7,5 +7,5 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php foreach($row as $result): ?>
-    <option value="<?= $row['province_id'] ?>"><?= $row['name'] ?></option>
+    <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
 <?php endforeach; ?>
