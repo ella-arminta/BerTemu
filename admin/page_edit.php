@@ -216,11 +216,20 @@ if (isset($_POST['submit_button'])) {
                     },
                     success: function(response) {
                         if (response == 'success') {
-                            $('#button_hilang').css('background-color', 'white');
+                            var id = <?= $_GET['id']; ?>;
+                            var sql = "UPDATE table_name SET status = 'hilang' WHERE id = " + id;
+                            db.query(sql, function(error, result) {
+                                if (error) {
+                                    console.log('Update error: ' + error.message);
+                                    return;
+                                }
+                                console.log('Update success');
+                            });
                         }
                     }
                 });
             });
+
             $("#button_pencarian").click(function() {
                 $.ajax({
                     type: "POST",
@@ -231,23 +240,38 @@ if (isset($_POST['submit_button'])) {
                     },
                     success: function(response) {
                         if (response == 'success') {
-                            $('#button_pencarian').css('background-color', 'white');
+                            var id = <?= $_GET['id']; ?>;
+                            var sql = "UPDATE orang_hilang SET status = 'pencarian' WHERE id = " + id;
+                            db.query(sql, function(error, result) {
+                                if (error) {
+                                    console.log('Update error: ' + error.message);
+                                    return;
+                                }
+                                console.log('Update success');
+                            });
                         }
                     }
                 });
             });
+
             $("#button_selesai").click(function() {
                 $.ajax({
                     type: "POST",
                     url: "setStatusHilang.php",
-                    id: '<?= $_GET['id']; ?>',
                     data: {
                         status: 'selesai',
+                        id: '<?= $_GET['id']; ?>',
                     },
                     success: function(response) {
-                        if (response == 'success') {
-                            $('#button_selesai').css('background-color', 'white');
-                        }
+                        var id = <?= $_GET['id']; ?>;
+                        var sql = "UPDATE table_name SET status = 'selesai' WHERE id = " + id;
+                        db.query(sql, function(error, result) {
+                            if (error) {
+                                console.log('Update error: ' + error.message);
+                                return;
+                            }
+                            console.log('Update success');
+                        });
                     }
                 });
             });
