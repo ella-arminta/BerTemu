@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2023 at 01:38 PM
+-- Generation Time: Apr 22, 2023 at 05:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -7261,6 +7261,30 @@ INSERT INTO `districts` (`id`, `regency_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `komentar`
+--
+
+CREATE TABLE `komentar` (
+  `id_komentar` int(11) NOT NULL,
+  `id_hilang` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `isi` text NOT NULL,
+  `status` int(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `komentar`
+--
+
+INSERT INTO `komentar` (`id_komentar`, `id_hilang`, `id_user`, `timestamp`, `isi`, `status`) VALUES
+(1, 1, 1, '2023-04-18 00:37:33', 'haii semoga cepat ketemu ya anaknya', 1),
+(2, 1, 1, '2023-04-18 00:54:48', 'hajdfs', 1),
+(3, 1, 1, '2023-04-18 00:55:02', 'ytyty', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orang_hilang`
 --
 
@@ -7273,9 +7297,20 @@ CREATE TABLE `orang_hilang` (
   `tinggi` int(11) NOT NULL,
   `keterangan` text NOT NULL,
   `tanggal_hilang` date NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `nomor_telepon` varchar(12) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orang_hilang`
+--
+
+INSERT INTO `orang_hilang` (`id_hilang`, `nama_lengkap`, `id_kota`, `jenis_kelamin`, `umur_hilang`, `tinggi`, `keterangan`, `tanggal_hilang`, `timestamp`, `nomor_telepon`, `foto`) VALUES
+(1, 'yuko', 1111, 'P', 12, 161, 'rambut hitam', '2023-04-12', '2023-04-17 08:21:02', '081515226684', ''),
+(12, 'Hiyaa askjdf', 1110, 'P', 18, 120, 'askjdf\r\nasdf\r\nasdf\r\nasdf\r\nasdf', '2023-04-04', '2023-04-17 22:56:18', '089681551106', ''),
+(13, 'kirana', 1103, 'L', 19, 123, 'ksdf\r\na\r\nhahah\r\nhihi\r\nhsdfsd\r\njsdf', '2023-04-03', '2023-04-17 23:37:54', '02934803', ''),
+(14, 'Hiyaa nggk', 1101, 'P', 180, 101, 'yeyyeyyeyey', '2023-04-11', '2023-04-18 10:52:09', '085100225381', 'pulih.png');
 
 -- --------------------------------------------------------
 
@@ -7888,6 +7923,13 @@ CREATE TABLE `users` (
   `email` varchar(320) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `nama_lengkap`, `password`, `ktp`, `nik`, `foto_diri`, `email`, `status`) VALUES
+(1, 'Ella Arminta', 'admin123', 'assets/KTP/foto-KTP-armintaella15@gmail.com.png', '125342352', 'assets/foto_diri/foto-diri-armintaella15@gmail.com.png', 'armintaella15@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -82977,6 +83019,12 @@ ALTER TABLE `districts`
   ADD KEY `districts_id_index` (`regency_id`);
 
 --
+-- Indexes for table `komentar`
+--
+ALTER TABLE `komentar`
+  ADD PRIMARY KEY (`id_komentar`);
+
+--
 -- Indexes for table `orang_hilang`
 --
 ALTER TABLE `orang_hilang`
@@ -83019,10 +83067,16 @@ ALTER TABLE `villages`
 --
 
 --
+-- AUTO_INCREMENT for table `komentar`
+--
+ALTER TABLE `komentar`
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `orang_hilang`
 --
 ALTER TABLE `orang_hilang`
-  MODIFY `id_hilang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_hilang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `subscriber`
@@ -83034,7 +83088,7 @@ ALTER TABLE `subscriber`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
