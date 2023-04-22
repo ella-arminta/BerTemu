@@ -28,8 +28,9 @@ if (empty($session_login))
             background: white;
             width: 100%;
             border-radius: 15px;
-            border-top: 2px solid #1f2446;
-            border-bottom: 2px solid #1f2446;
+            /* border-top: 2px solid #1f2446;
+            border-bottom: 2px solid #1f2446; */
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
         .foto {
             border-radius: 15px;
@@ -39,12 +40,21 @@ if (empty($session_login))
         .alert {
             width: 80%;
         }
+        .outer{
+            margin:auto;
+            width: 90%;
+            height:100%;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+        }
     </style>
 <body>
     <div class="container-hp">
         <nav class="pembatas-navbar"></nav>
-        <div class="container justify-content-center px-5 m-2">
-            <div class="white p-3 mb-3">
+        <div class="outer">
+        <div class="white p-3 mb-3">
                 <div class="row mx-1">
                     <div class="col-lg-4 col-12 p-2">
                         <img class="foto" src="<?php echo $session_login['foto_diri'] ?>" alt="">

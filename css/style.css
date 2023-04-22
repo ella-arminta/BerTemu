@@ -4,7 +4,7 @@ body{
     overflow: auto;
     margin:auto;
     min-height: 100vh;
-    background-color: rgba(174, 215, 237, 0.712) !important;
+    background-color: white !important;
     font-size: 20px;
     transition: 0.3s;
 }
