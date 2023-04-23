@@ -48,7 +48,7 @@ if(isset($_POST['submit_button'])){
 
     <style>
         body {
-            background-color: rgb(235, 250, 253);
+            background-color: rgb(255, 255, 255);
             margin-left: 2%;
             margin-right: 2%;
         }
@@ -78,16 +78,16 @@ if(isset($_POST['submit_button'])){
 
 <body>
     <a href="tabel_hilang.php">
-        <button type="Button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
+        <button type="Button" class="button1" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT'">
             < BACK </button>
     </a>
 
     <form method="post" enctype="multipart/form-data">
         <div class="row">
-            <h4 class="center" style="font-weight: bold; font-family:'Gill Sans MT'">Input form orang hilang </h4>
+            <h4 class="center" style="font-weight: bold; font-family:'Gill Sans MT'; color : #212427">Input form orang hilang </h4>
             <div class="col">
                 <div class="form-group">
-                    <label for="foto" style="font-family: 'Gill Sans MT';">Foto</label> <br>
+                    <label for="foto" style="font-family: 'Gill Sans MT'; color : #212427">Foto</label> <br>
                     <input type="file" style="margin-bottom: 2%" id="foto" name="foto" onchange="previewImage(event)">
                     <img id="image-preview" src="#" alt="Preview Image" style="max-width: 100%; height: auto;">
                 </div>
@@ -104,7 +104,7 @@ if(isset($_POST['submit_button'])){
                 }
             </script>
             <div class="col mb-2">
-                <label for="id_kota" style="font-family: 'Gill Sans MT';"> Kota Hilang </label>
+                <label for="id_kota" style="font-family: 'Gill Sans MT'; color : #212427"> Kota Hilang </label>
                 <!-- <input type="text" class="form-control" id="id_kota" name="id_kota"> -->
                 <select class="form-control" name="id_kota" id="id_kota">
                     <?php foreach ($result as $row) { ?>
@@ -112,12 +112,12 @@ if(isset($_POST['submit_button'])){
                     <?php } ?>
                 </select> <br>
 
-                <label for="tanggalHilang" style="font-family: 'Gill Sans MT';"> Tanggal Hilang </label>
+                <label for="tanggalHilang" style="font-family: 'Gill Sans MT'; color : #212427"> Tanggal Hilang </label>
                 <input type="date" id="tanggal_hilang" name="tanggal_hilang" class="form-control">
                 <div class="form-group mb-3">
-                    <label for="nama" style="font-family: 'Gill Sans MT';"> Nama orang hilang</label>
+                    <label for="nama" style="font-family: 'Gill Sans MT'; color : #212427"> Nama orang hilang</label>
                     <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap">
-                    <label for="tinggiBadan" style="font-family: 'Gill Sans MT';"> Tinggi Badan </label>
+                    <label for="tinggiBadan" style="font-family: 'Gill Sans MT'; color : #212427"> Tinggi Badan </label>
                     <div class="input-group mb-3">
                         <input type="number" id="tinggi" name="tinggi" class="form-control">
                         <div class="input-group-append">
@@ -125,18 +125,18 @@ if(isset($_POST['submit_button'])){
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="jenis_kelamin" style="font-family: 'Gill Sans MT';">Jenis Kelamin</label>
+                        <label for="jenis_kelamin" style="font-family: 'Gill Sans MT'; color : #212427">Jenis Kelamin</label>
                         <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
                             <option style="font-family: 'Gill Sans MT';">Perempuan</option>
                             <option style="font-family: 'Gill Sans MT';">laki-laki</option>
                         </select>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="umur" style="font-family: 'Gill Sans MT';"> Umur </label>
+                        <label for="umur" style="font-family: 'Gill Sans MT'; color : #212427"> Umur </label>
                         <input type="text" class="form-control" name="umur_hilang" id="umur_hilang">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="phone" style="font-family: 'Gill Sans MT';">Nomor Telepon yang bisa dihubungi</label>
+                        <label for="phone" style="font-family: 'Gill Sans MT'; color : #212427">Nomor Telepon yang bisa dihubungi</label>
                         <input type="tel" class="form-control" id="nomor_telepon" name="nomor_telepon">
                     </div>
                 </div>
@@ -144,12 +144,12 @@ if(isset($_POST['submit_button'])){
 
             <div class="row">
                 <div class="form-group mb-3">
-                    <label for="keterangan" style="font-family: 'Gill Sans MT';">Keterangan tambahan</label>
+                    <label for="keterangan" style="font-family: 'Gill Sans MT'; color : #212427">Keterangan tambahan</label>
                     <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
                 </div>
             </div>
         </div>
-        <input type="submit" name="submit_button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'"  id="submit" value="Submit">
+        <input type="submit" name="submit_button" class="button1" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT'"  id="submit" value="Submit">
     </form>
 </body>
 

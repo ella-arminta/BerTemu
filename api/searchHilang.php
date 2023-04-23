@@ -129,6 +129,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             array_push($hasilFilter,'%'.$nama_hilang.'%');
         }
     }
+
+    // tambah if status
+    if(!$where){
+        $query .= ' WHERE';
+        $where = true;
+    }
+    if($and){
+        $query .= ' AND';
+    }
+    $query .= ' status != "selesai"';
+
     $stmt = $conn->prepare($query);
     $stmt->execute($hasilFilter);
     $rows = $stmt->fetchAll();
