@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
     $isi = $_POST['isi'];
-    $id_user = $_SESSION['login'];
-    $id_hilang = $_POST['id_forum'];
+    $id_user =(int) $_SESSION['login'];
+    $id_hilang = (int) $_POST['id_forum'];
     $stmt = $conn->prepare("INSERT INTO komentar (id_hilang,id_user,isi) values (?,?,?)");
     $berhasil = $stmt->execute([$id_hilang,$id_user,$isi]);
     if($berhasil){
