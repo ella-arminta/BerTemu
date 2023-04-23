@@ -41,9 +41,13 @@ if (empty($session_login))
             width: 100%;
             height: auto;
         }
-        .btn, .status {
+        .btn {
             font-size: 16px;
             background-color: #EC6C4F !important;
+        }
+
+        .status {
+            font-size: 16px;
         }
     </style>
 <body>
@@ -74,7 +78,7 @@ if (empty($session_login))
                             $status = $stmt->fetchAll();
 
                             if ($status[0]['status'] == 1) {
-                                echo '<div class="status p-2 px-3 mb-3 rounded bg-success text-light mt-3" style="display: inline-block;"><p><b>AKUN TER-VERIFIKASI</b></p></div>';
+                                echo '<div class="status p-2 px-3 mb-3 rounded bg-success text-light mt-3" style="display: inline-block;"><b>AKUN TER-VERIFIKASI</b></div>';
                             }
                             else {
                                 echo '<div class="status p-2 px-3 mb-3 rounded bg-danger text-light mt-3" style="display: inline-block;"><b>AKUN BELUM TERVERIFIKASI</b></div>';

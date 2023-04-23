@@ -108,7 +108,7 @@ if(isset($_POST['submit_button'])){
                 <!-- <input type="text" class="form-control" id="id_kota" name="id_kota"> -->
                 <select class="form-control" name="id_kota" id="id_kota">
                     <?php foreach ($result as $row) { ?>
-                        <option value="<?= $row['province_id'] ?>"><?= $row['name'] ?></option>
+                        <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
                     <?php } ?>
                 </select> <br>
 
