@@ -90,13 +90,15 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sign-up</title>
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<!-- custom css -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <style>
         /* css input image */
         .image-input-container {
@@ -142,11 +144,11 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
 
         /* lain-lain */
         .pembatas-navbar {
-            height: 200px;
+            height: 5vh;
             width: 100%;
         }
         .btn {
-            background: #387CF3 !important;
+            background: #71CEEF !important;
             color: white;
         }
     </style>
@@ -195,34 +197,34 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
 </head>
 <body>
     <div class="container-hp">
-        <div class="mx-auto" style="padding-right: 80px; padding-left: 80px; padding-top: 50px;">
+        <div class="mx-auto p-5">
             <div class="row start-0">
-                <H1>Buat Akun</H1>
+                <H2>Buat Akun</H2>
             </div>
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex p-2 justify-content-center">
                 <!-- form -->
                 <form method="post" style="width: 100%;" enctype="multipart/form-data">
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label class="form-label">Nama</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="name">
                     </div>
                     <?=isset($msgName) ? '<div class="alert alert-danger">'.$msgName.'</div>' : ''?>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label class="form-label">Email</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="email">
                     </div>
                     <?=isset($msgEmail) ? '<div class="alert alert-danger">'.$msgEmail.'</div>' : ''?>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label class="form-label">NIK</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="nik">
                     </div>
                     <?=isset($msgNIK) ? '<div class="alert alert-danger">'.$msgNIK.'</div>' : ''?>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label class="form-label">Kata Sandi</label>
                         <input type="password" class="form-control" id="exampleInputEmail1" name="password">
                     </div>
                     <?=isset($msgPassword) ? '<div class="alert alert-danger">'.$msgPassword.'</div>' : ''?>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="image">Foto Diri:</label>
                         <div class="image-input-container" onclick="document.getElementById('image').click()">
                             <div class="image-preview" id="image-preview">
@@ -235,7 +237,7 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
                         </div>
                     </div>
                     <?=isset($msgDiri) ? '<div class="alert alert-danger">'.$msgDiri.'</div>' : ''?>
-                    <div class="mb-5">
+                    <div class="mb-2">
                         <label for="imageKTP">Foto KTP:</label>
                         <div class="image-input-container" onclick="document.getElementById('imageKTP').click()">
                             <div class="image-previewKTP" id="image-previewKTP">

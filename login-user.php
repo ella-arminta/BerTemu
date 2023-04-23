@@ -38,7 +38,7 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
+    <title>Log-in</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
  <link rel="stylesheet" type="text/css" href="css/style.css">
  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -52,7 +52,7 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
         border-radius: 12px;
     }
     .btn {
-        background: #387CF3 !important;
+        background: #71CEEF !important;
         color: white;
     }
     .outer{
@@ -60,6 +60,10 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
         flex-direction:column;
         justify-content:center;
         align-items:center;
+    }
+    .pembatas-navbar {
+        height: 5vh;
+        width: 100%;
     }
 </style>
 <body>
@@ -83,10 +87,14 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
                         <button class="btn" name="login" value="1" style="width: 100%; border-radius: 12px;">Login</button>
                     </div>
                     <div class="d-grid gap-2 d-flex justify-content-center">
-                        <p>Belum punya akun? <a href="sign-up-user.php" style="color: #dc7357; font-size: 18px !important;">Buat Akun</a></p>
+                        <p style="text-align:center;">Belum punya akun? <br> <a href="sign-up-user.php" style="color: #dc7357; font-size: 18px !important;">Buat Akun</a></p>
                     </div>
                 </form>
         </div>
+
+        <div class="pembatas-navbar"></div>
+        <div class="pembatas-navbar"></div>
+        <div class="pembatas-navbar"></div>
 
         <!-- Menu -->
         <?php require_once 'bottombar.php'; ?>

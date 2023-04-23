@@ -24,7 +24,7 @@
         background: white;
         /* border-top: 2px solid #1f2446;
         border-bottom: 2px solid #1f2446; */
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
     }
 
     .img-content {
@@ -34,13 +34,15 @@
     }
 
     .pembatas-navbar {
+        height: 5vh;
         width: 100%;
-        height: 120px;
     }
 </style>
 <body>
     <div class="container-hp">
 
+        <div class="pembatas-navbar"></div>
+        <div class="pembatas-navbar"></div>
         <div class="pembatas-navbar"></div>
 
         <!-- navbar top -->
@@ -61,16 +63,18 @@
         </nav>
         
         <div class="container justify-content-center" style="max-width: 700px;">
-            <div class="mx-5">
-                <div class="content content1 mb-5">
-                    <img class="img-content" src="assets/content-01.jpg" alt="">
+            <div class="mx-2">
+                <div class="content content1 mb-4">
+                    <img class="img-content" src="assets/content-2-01.jpg" alt="">
                 </div>
-                <div class="content conten2 mt-5">
-                    <img class="img-content" src="assets/content-02.jpg" alt="">
+                <div class="content content2">
+                    <img class="img-content" src="assets/content-2-02.jpg" alt="">
                 </div>
             </div>
         </div>
 
+        <div class="pembatas-navbar"></div>
+        <div class="pembatas-navbar"></div>
         <div class="pembatas-navbar"></div>
 
         <?php require_once 'bottombar.php'; ?>

@@ -4,7 +4,7 @@
 .fixed-bottom {
     max-width: 780px;
     position: fixed;
-    background: #387CF3 !important;
+    background: #4566BA !important;
     bottom:0;
 }
 .icon {
@@ -16,7 +16,7 @@
     padding-bottom:8px;
 }
 .active {
-    background: #5699F4;
+    background: #5275CD;
 }
 .navbar-nav{
     display:flex;
@@ -71,7 +71,7 @@ li:hover {
     home = ['index-user.php'];
     explore = ['explore.php'];
     chat = [];
-    settings = ['settings-user.php'];
+    settings = ['settings-user.php', 'login-user.php', 'sign-up-user.php'];
     console.log(url)
     if(home.includes(url)){
         document.querySelector('.nav-link[href="index-user.php"]').classList.add('active');
@@ -79,7 +79,7 @@ li:hover {
         document.querySelector('.nav-link[href="explore.php"]').classList.add('active');
     }else if(chat.includes(url)){
         document.querySelector('.nav-link[href="#"]').classList.add('active');
-    }else if(settings.includes(url)){
+    }else if(settings.includes(url || 'login-user.php' || 'sign-up-user.php')){
         document.querySelector('.nav-link[href="settings-user.php"]').classList.add('active');
     }
 </script>

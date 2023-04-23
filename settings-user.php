@@ -21,45 +21,41 @@ if (empty($session_login))
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <style>
         .pembatas-navbar {
-            height: 70px;
+            height: 5vh;
             width: 100%;
         }
-        .white {
-            background: white;
+        .content {
             width: 100%;
-            border-radius: 15px;
-            /* border-top: 2px solid #1f2446;
-            border-bottom: 2px solid #1f2446; */
-            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            height: auto;
+            overflow-y: hidden !important;
+            color: white;
+            position: relative;
+            background: #71CEEF;
+            /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
         }
         .foto {
             border-radius: 15px;
             width: 100%;
             height: auto;
         }
-        .alert {
-            width: 80%;
-        }
-        .outer{
-            margin:auto;
-            width: 90%;
-            height:100%;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
+        .btn, .status {
+            background-color: #EC6C4F !important;
         }
     </style>
 <body>
     <div class="container-hp">
         <nav class="pembatas-navbar"></nav>
-        <div class="outer">
-        <div class="white p-3 mb-3">
-                <div class="row mx-1">
+
+        <div class="container justify-content-center mx-auto" style="max-width: 700px;">
+            <div class="mx-2">
+                <div class="row p-3 start-0">
+                    <H2>Akun Anda</H2>
+                </div>
+                <div class="content row p-3 mb-2 mx-auto">
                     <div class="col-lg-4 col-12 p-2">
                         <img class="foto" src="<?php echo $session_login['foto_diri'] ?>" alt="">
                     </div>
-                    <div class="col-lg-8 col-12 p-2">
+                    <div class="col-lg-8 col-12">
                         <div class="data">
                             <div style="font-size: 30px;"><b><?php echo $session_login['nama_lengkap'] ?></b></div>
                             <div style="font-size: 20px;"><?php echo $session_login['email'] ?></div>
@@ -73,18 +69,23 @@ if (empty($session_login))
                             $status = $stmt->fetchAll();
 
                             if ($status[0]['status'] == 1) {
-                                echo '<div class="alert bg-success text-light mt-3 justify-content-center"><b>AKUN TER-VERIFIKASI</b></div>';
+                                echo '<div class="status p-2 px-3 mb-3 rounded bg-success text-light mt-3" style="display: inline-block;"><p><b>AKUN TER-VERIFIKASI</b></p></div>';
                             }
                             else {
-                                echo '<div class="alert bg-danger text-light mt-3 justify-content-center"><b>AKUN BELUM TERVERIFIKASI</b></div>';
+                                echo '<div class="status p-2 px-3 mb-3 rounded bg-danger text-light mt-3" style="display: inline-block;"><b>AKUN BELUM TERVERIFIKASI</b></div>';
                             }
                             ?>
                         </div>
                     </div>
                 </div>
+                <div class="row p-3 mb-3">
+                    <a class="btn btn-danger m-2" href="logout-user.php"><b>LOG-OUT</b></a>
+                </div>
             </div>
-            <a class="btn btn-danger" href="logout-user.php"><b>LOG-OUT</b></a>
         </div>
+
+        <nav class="pembatas-navbar"></nav>
+        <nav class="pembatas-navbar"></nav>
         <!-- Menu -->
         <?php require_once 'bottombar.php'; ?>
     </div>
