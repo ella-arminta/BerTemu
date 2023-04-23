@@ -29,13 +29,13 @@
     /* css template */
     .fixed-top {
         position: fixed;
-        background: #475a7c !important;
+        background: #4566BA !important;
     }
 
     /* css menu-user */
     .fixed-bottom {
         position: fixed;
-        background: #475a7c !important;
+        background: #4566BA !important;
     }
     .icon {
         width: 40px;
@@ -44,7 +44,7 @@
         margin-right: 20px;
     }
     .active {
-        background: #546F96;
+        background: #5275CD;
     }
 
     .pembatas-navbar {

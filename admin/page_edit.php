@@ -80,17 +80,13 @@ if (isset($_POST['submit_button'])) {
 </head>
 <style>
     body {
-        background-color: rgb(235, 250, 253);
+        background-color: rgb(255, 255, 255);
         margin-left: 2%;
         margin-right: 2%;
     }
 
     .btn {
-        background-color: rgb(57, 79, 110);
-    }
-
-    .btn:focus {
-        background-color: rgb(236, 108, 79);
+        background-color: #4566BA;
     }
 
     .button1 {
@@ -108,7 +104,7 @@ if (isset($_POST['submit_button'])) {
 
 <body>
     <a href="tabel_hilang.php">
-        <button type="Button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
+        <button type="Button" class="button1" style="background-color :#4566BA; color:white; font-family:'Gill Sans MT'">
             < BACK </button>
     </a>
     <form method="post">
@@ -132,14 +128,14 @@ if (isset($_POST['submit_button'])) {
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label for="foto">Foto</label>
+                    <label for="foto" style ="color : #212427">Foto</label>
                     <input type="file" class="form-control-file" id="foto" name="foto" onchange="previewImage(event)"> <br>
                     <img id="image-preview" src="<?= $result1[0]['foto'] ?>" alt="Preview Image" style="max-width: 100%; height: auto;">
                 </div>
             </div>
 
             <div class="col mb-2">
-                <label for="id_kota" style="font-family: 'Gill Sans MT';">Kota Hilang</label>
+                <label for="id_kota" style="font-family: 'Gill Sans MT'; color : #212427">Kota Hilang</label>
                 <select name="id_kota" id="id_kota" class="form-control">
                     <?php foreach ($result2 as $row) {
                         if ($row["id"] == $result1[0]["id_kota"]) { ?>
@@ -150,15 +146,15 @@ if (isset($_POST['submit_button'])) {
                     } ?>
                 </select>
 
-                <label for="tanggalHilang" style="font-family: 'Gill Sans MT';">Tanggal Hilang</label>
+                <label for="tanggalHilang" style="font-family: 'Gill Sans MT'; color : #212427">Tanggal Hilang</label>
                 <input type="date" id="tanggal_hilang" name="tanggal_hilang" class="form-control" value="<?= $result1[0]['tanggal_hilang'] ?>">
 
                 <div class="form-group mb-3">
-                    <label for="nama" style="font-family: 'Gill Sans MT';">Nama orang hilang</label>
+                    <label for="nama" style="font-family: 'Gill Sans MT'; color : #212427">Nama orang hilang</label>
                     <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="<?= $result1[0]['nama_lengkap'] ?>">
 
                     <div class="form-group">
-                        <label for="tinggiBadan" style="font-family: 'Gill Sans MT';">Tinggi Badan</label>
+                        <label for="tinggiBadan" style="font-family: 'Gill Sans MT'; color : #212427">Tinggi Badan</label>
                         <div class="input-group mb-3">
                             <input type="number" id="tinggi" name="tinggi" class="form-control" value="<?= $result1[0]['tinggi'] ?>">
                             <div class="input-group-append">
@@ -166,7 +162,7 @@ if (isset($_POST['submit_button'])) {
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="jenis_kelamin" style="font-family: 'Gill Sans MT';">Jenis Kelamin</label>
+                            <label for="jenis_kelamin" style="font-family: 'Gill Sans MT'; color : #212427">Jenis Kelamin</label>
                             <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
                                 <?php if ($result1[0]['jenis_kelamin'] === "P") { ?>
                                     <option selected>Perempuan</option>
@@ -178,18 +174,18 @@ if (isset($_POST['submit_button'])) {
                             </select>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="umur" style="font-family: 'Gill Sans MT';">Umur</label>
+                            <label for="umur" style="font-family: 'Gill Sans MT'; color : #212427">Umur</label>
                             <input type="text" class="form-control" name="umur_hilang" id="umur_hilang" value="<?= $result1[0]['umur_hilang'] ?>">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="nomor_telepon" style="font-family: 'Gill Sans MT';">Nomor Telepon yang bisa dihubungi</label>
+                            <label for="nomor_telepon" style="font-family: 'Gill Sans MT'; color : #212427">Nomor Telepon yang bisa dihubungi</label>
                             <input type="tel" class="form-control" id="nomor_telepon" name="nomor_telepon" value="<?= $result1[0]['nomor_telepon'] ?>">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <label for="keterangan" style="font-family: 'Gill Sans MT';">Keterangan tambahan</label>
+        <label for="keterangan" style="font-family: 'Gill Sans MT'; color : #212427">Keterangan tambahan</label>
         <textarea class="form-control" id="keterangan" name="keterangan" rows="3"><?= $result1[0]['keterangan'] ?></textarea>
 
         <button type="submit" name="submit_button" class="btn" style="background-color:rgb(57,79,110); color:white; font-family:'Gill Sans MT'" id="submit" value="submit">Submit</button>
@@ -205,6 +201,31 @@ if (isset($_POST['submit_button'])) {
             }
             reader.readAsDataURL(event.target.files[0]);
         }
+
+        <?php
+        if ($result1[0]['status'] == 'hilang') { ?>
+            $('#button_hilang').css(
+                'background-color',
+                'rgb(236, 108, 79)'
+            );
+        <?php }
+        ?>
+         <?php
+        if ($result1[0]['status'] == 'pencarian') { ?>
+            $('#button_pencarian').css(
+                'background-color',
+                'rgb(236, 108, 79)'
+            );
+        <?php }
+        ?>
+         <?php
+        if ($result1[0]['status'] == 'selesai') { ?>
+            $('#button_selesai').css(
+                'background-color',
+                'rgb(236, 108, 79)'
+            );
+        <?php }
+        ?>
         $(document).ready(function() {
             $("#button_hilang").click(function() {
                 $.ajax({
@@ -216,64 +237,53 @@ if (isset($_POST['submit_button'])) {
                     },
                     success: function(response) {
                         if (response == 'success') {
-                            var id = <?= $_GET['id']; ?>;
-                            var sql = "UPDATE table_name SET status = 'hilang' WHERE id = " + id;
-                            db.query(sql, function(error, result) {
-                                if (error) {
-                                    console.log('Update error: ' + error.message);
-                                    return;
-                                }
-                                console.log('Update success');
-                            });
-                        }
-                    }
-                });
-            });
-
-            $("#button_pencarian").click(function() {
-                $.ajax({
-                    type: "POST",
-                    url: "setStatusHilang.php",
-                    data: {
-                        status: 'pencarian',
-                        id: '<?= $_GET['id']; ?>',
-                    },
-                    success: function(response) {
-                        if (response == 'success') {
-                            var id = <?= $_GET['id']; ?>;
-                            var sql = "UPDATE orang_hilang SET status = 'pencarian' WHERE id = " + id;
-                            db.query(sql, function(error, result) {
-                                if (error) {
-                                    console.log('Update error: ' + error.message);
-                                    return;
-                                }
-                                console.log('Update success');
-                            });
-                        }
-                    }
-                });
-            });
-
-            $("#button_selesai").click(function() {
-                $.ajax({
-                    type: "POST",
-                    url: "setStatusHilang.php",
-                    data: {
-                        status: 'selesai',
-                        id: '<?= $_GET['id']; ?>',
-                    },
-                    success: function(response) {
-                        var id = <?= $_GET['id']; ?>;
-                        var sql = "UPDATE table_name SET status = 'selesai' WHERE id = " + id;
-                        db.query(sql, function(error, result) {
-                            if (error) {
-                                console.log('Update error: ' + error.message);
-                                return;
-                            }
                             console.log('Update success');
-                        });
+                            $('#button_hilang').css(
+                                'background-color',
+                                'rgb(236, 108, 79)'
+                            );
+                        }
                     }
                 });
+            });
+        });
+        $("#button_pencarian").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "setStatusHilang.php",
+                data: {
+                    status: 'pencarian',
+                    id: '<?= $_GET['id']; ?>',
+                },
+                success: function(response) {
+                    if (response == 'success') {
+                        console.log('Update success');
+                        $('#button_pencarian').css(
+                            'background-color',
+                            'rgb(236, 108, 79)'
+                        );
+                    }
+                }
+            });
+        });
+
+        $("#button_selesai").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "setStatusHilang.php",
+                data: {
+                    status: 'selesai',
+                    id: '<?= $_GET['id']; ?>',
+                },
+                success: function(response) {
+                    if (response == 'success') {
+                        console.log('Update success');
+                        $('#button_selesai').css(
+                            'background-color',
+                            'rgb(236, 108, 79)'
+                        );
+                    }
+                }
             });
         });
     </script>

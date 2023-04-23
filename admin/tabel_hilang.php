@@ -25,7 +25,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <style>
   body {
-    background-color: rgb(235, 250, 253);
+    background-color: rgb(255, 255, 255);
     margin-left: 2%;
     margin-right: 2%;
     margin-top: 2%;
@@ -54,22 +54,16 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     font-size: 18px;
   }
 
-  body {
-    background-color: #eef9fc;
-    margin-left: 2%;
-    margin-right: 2%;
-  }
-
   /* css template */
   .fixed-top {
     position: fixed;
-    background: #475a7c !important;
+    background: #4566BA !important;
   }
 
   /* css menu-user */
   .fixed-bottom {
     position: fixed;
-    background: #475a7c !important;
+    background: #4566BA !important;
   }
 
   .icon {
@@ -80,7 +74,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
   .active {
-    background: #546F96;
+    background: #5275CD;
   }
 
   .pembatas-navbar {
@@ -99,24 +93,25 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <br>
 
   <a href="input_hilang.php">
-    <button type="Button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT'">
+    <button type="Button" class="button1" style="background-color : #4566BA ; color:white; font-family:'Gill Sans MT'">
       + ADD
     </button>
   </a>
-  <table class="table table-light table-striped table-bordered table-hover" id="table">
+  <table class="table table-light table-striped table-bordered table-hover" style="color: #212427" id="table">
     <thead>
       <tr>
-        <th scope="col" style="font-family: 'Gill Sans MT';">No.</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Nama Lengkap</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Kota</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Jenis Kelamin</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Umur Hilang</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Tinggi</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Keterangan umum</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Tanggal Hilang</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Nomor Telepon</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Foto</th>
-        <th scope="col" style="font-family: 'Gill Sans MT';">Action</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">No.</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Nama Lengkap</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Kota</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Jenis Kelamin</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Umur Hilang</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Tinggi</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Keterangan umum</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Tanggal Hilang</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Nomor Telepon</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Status</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Foto</th>
+        <th scope="col" style="font-family: 'Gill Sans MT'; color: #212427">Action</th>
       </tr>
     </thead>
     <tbody id="tabel_hilang">
@@ -137,11 +132,12 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?= $row['keterangan'] ?></td>
           <td><?= $row['tanggal_hilang'] ?></td>
           <td><?= $row['nomor_telepon'] ?></td>
+          <td><?= $row['status'] ?></td>
           <td><?= $row['foto'] ?></td>
 
           <td>
             <a href="page_edit.php?id=<?= $row['id_hilang'] ?>">
-              <button type="button" class="btn" id="<?= $row['id_hilang'] ?>" style="background-color: rgb(57, 79, 110); color: white; font-family: 'Gill Sans MT';">
+              <button type="button" class="btn" id="<?= $row['id_hilang'] ?>" style="background-color: #4566BA ; color: white; font-family: 'Gill Sans MT';">
                 <i class="fas fa-edit" style="font-size: 24px;"></i>
               </button>
             </a>
@@ -182,6 +178,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       },
       success: function(result) {
         $("#div1").html(result);
+        $("#div1").css('color','#212427');
       }
     });
   }
