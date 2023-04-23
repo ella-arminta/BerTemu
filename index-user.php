@@ -82,12 +82,12 @@
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0 my-0 mx-auto py-0 my-0 mx-auto mynavbar">
             <ul class="navbar-nav mynavbar">
                 <!-- gagal top right -->
-                <li class="nav-item jarak-kiri" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                <li class="nav-item" data-bs-toggle="modal" data-bs-target="#subscribeModal">
                     <a class="navbar-brand py-0 my-0" id="bell" href="#"><i class="fa-solid fa-bell fa-2xl" style="color: #ffffff;"></i></a>
                 </li>
                 <a class="nav-link py-0 my-0 mx-auto" href="#"><img src="assets/logo-horizontal.png" style="height: 80px"></a>
                 <!-- gagal top right -->
-                <li class="nav-item" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                <li class="nav-item jarak-kiri">
                     <a class="navbar-brand py-0 my-0" id="bell" href="#"><i class="fa-solid fa-bell fa-2xl" style="color: #ffffff;"></i></a>
                 </li>
             </ul>                

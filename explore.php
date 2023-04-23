@@ -21,6 +21,25 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="css/explore.css">
 </head>
+<style>
+        .mynavbar{
+        display:flex;
+        justify-content:space-between !important;
+        align-items:center;
+        width:100%;
+    }
+    .navbar.mynavbar{
+        padding: 0px 5%;
+    }
+    .jarak-kiri{
+        visibility:hidden;
+    }
+    @media(max-width:439px){
+        .jarak-kiri{
+            display:none;
+        }
+    }
+</style>
 <body>
     <div class="container-hp">
         <div class="backdrop"></div>
@@ -90,13 +109,24 @@
                 </form>
             </div>
         </div>
-        <div class="header">
+        <!-- <div class="header">
             <div class="filter"  onclick="showLeftBar()"><i class="fa-solid fa-filter fa-2xl" style="color:white;"></i></div>
             <div class="outer-input">
                 <input type="text" id="carinama" placeholder="Cari Nama">
                 <div onclick="searchByName()"><i class="fa-solid fa-paper-plane fa-xl" ></i></div>
             </div>
-        </div>
+        </div> -->
+        <!-- header -->
+        <nav class="header navbar fixed-top navbar-expand-lg navbar-light bg-light py-0 my-0 mx-auto py-0 my-0 mx-auto mynavbar">
+            <ul class="navbar-nav mynavbar">
+                <div class="filter"  onclick="showLeftBar()"><i class="fa-solid fa-filter fa-2xl" style="color:white;margin-left:40px;"></i></div>
+                <div class="outer-input">
+                    <input type="text" id="carinama" placeholder="Cari Nama">
+                    <div onclick="searchByName()"><i class="fa-solid fa-paper-plane fa-xl" ></i></div>
+                </div>
+                <div class="filter"><i class="fa-solid fa-filter fa-2xl" style="color:white;visibility:hidden;"></i></div>
+            </ul>                
+        </nav>
         <div style="height:90px;width:100%"></div>
         <div class="card-container">
             <div class="mycard" onclick="openForum()">
