@@ -26,11 +26,35 @@
         <div class="header" style="background-color:transparent">
             <h1 style="font-size:28px;">Riwayat Diskusi</h1>
         </div>
+        <div style="height:100px;"></div>
         <?php
         if(!isset($_SESSION['login'])):
         ?>
-
+        <div>
+            <h1 style="padding:20px;font-size:20px;margin:auto;text-align:center;">Login untuk dapat melihat Riwayat Diskusi</h1>
+        <button type="Button" class="button1 btn" onclick="window.location.href= 'login-user.php'" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT';border:none;width:80px;display:block;margin:auto;">Log-in</button>
+        </div>
+        
         <?php else: ?>
+        <div class="card-container">
+            <div class="mycard" onclick="openForum()">
+                <div>Jumat, 9 April 2024</div>
+                <div class="row">
+                    <div class="col-5">
+                        <img src="assets/img/orang_hilang/dummy1.jpg" alt="">
+                    </div>
+                    <div class="col-7">
+                        <div><b>Nicholas Suhendar</b></div>
+                        <div>
+                            chat terakhir orang hilang
+                        </div>
+                        <div>
+                            <div style="float:right;width:100px;">08.09</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php endif; ?>
         <!-- navbar top -->
         <?php include 'bottombar.php' ?>

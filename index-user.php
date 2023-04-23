@@ -62,11 +62,11 @@
     .navbar.mynavbar{
         padding: 0px 5%;
     }
-    .jarak-kiri{
+    .jarak-kanan{
         visibility:hidden;
     }
     @media(max-width:439px){
-        .jarak-kiri{
+        .jarak-kanan{
             display:none;
         }
     }
@@ -87,7 +87,7 @@
                 </li>
                 <a class="nav-link py-0 my-0 mx-auto" href="#"><img src="assets/logo-horizontal.png" style="height: 80px"></a>
                 <!-- gagal top right -->
-                <li class="nav-item jarak-kiri">
+                <li class="nav-item jarak-kanan">
                     <a class="navbar-brand py-0 my-0" id="bell" href="#"><i class="fa-solid fa-bell fa-2xl" style="color: #ffffff;"></i></a>
                 </li>
             </ul>                

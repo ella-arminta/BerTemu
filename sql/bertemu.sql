@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2023 at 05:08 PM
+-- Generation Time: Apr 23, 2023 at 05:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `bertemu`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `ID_Admin` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(10) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`ID_Admin`, `username`, `password`, `status`) VALUES
+(1, 'admin', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -7299,18 +7319,19 @@ CREATE TABLE `orang_hilang` (
   `tanggal_hilang` date NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `nomor_telepon` varchar(12) NOT NULL,
-  `foto` text NOT NULL
+  `foto` text NOT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'hilang'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orang_hilang`
 --
 
-INSERT INTO `orang_hilang` (`id_hilang`, `nama_lengkap`, `id_kota`, `jenis_kelamin`, `umur_hilang`, `tinggi`, `keterangan`, `tanggal_hilang`, `timestamp`, `nomor_telepon`, `foto`) VALUES
-(1, 'yuko', 1111, 'P', 12, 161, 'rambut hitam', '2023-04-12', '2023-04-17 08:21:02', '081515226684', ''),
-(12, 'Hiyaa askjdf', 1110, 'P', 18, 120, 'askjdf\r\nasdf\r\nasdf\r\nasdf\r\nasdf', '2023-04-04', '2023-04-17 22:56:18', '089681551106', ''),
-(13, 'kirana', 1103, 'L', 19, 123, 'ksdf\r\na\r\nhahah\r\nhihi\r\nhsdfsd\r\njsdf', '2023-04-03', '2023-04-17 23:37:54', '02934803', ''),
-(14, 'Hiyaa nggk', 1101, 'P', 180, 101, 'yeyyeyyeyey', '2023-04-11', '2023-04-18 10:52:09', '085100225381', 'pulih.png');
+INSERT INTO `orang_hilang` (`id_hilang`, `nama_lengkap`, `id_kota`, `jenis_kelamin`, `umur_hilang`, `tinggi`, `keterangan`, `tanggal_hilang`, `timestamp`, `nomor_telepon`, `foto`, `status`) VALUES
+(1, 'yuko', 1111, 'P', 12, 161, 'rambut hitam', '2023-04-12', '2023-04-23 09:23:48', '081515226684', '', 'pencarian'),
+(12, 'Hiyaa askjdf', 1110, 'P', 18, 120, 'askjdf\r\nasdf\r\nasdf\r\nasdf\r\nasdf', '2023-04-04', '2023-04-23 09:23:53', '089681551106', '', 'selesai'),
+(13, 'kirana', 1103, 'L', 19, 123, 'ksdf\r\na\r\nhahah\r\nhihi\r\nhsdfsd\r\njsdf', '2023-04-03', '2023-04-17 23:37:54', '02934803', '', 'hilang'),
+(14, 'Hiyaa nggk', 1101, 'P', 180, 101, 'yeyyeyyeyey', '2023-04-11', '2023-04-18 10:52:09', '085100225381', 'pulih.png', 'hilang');
 
 -- --------------------------------------------------------
 
@@ -7898,14 +7919,22 @@ INSERT INTO `regencies` (`id`, `province_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subscriber`
+-- Table structure for table `subscribers`
 --
 
-CREATE TABLE `subscriber` (
+CREATE TABLE `subscribers` (
   `id_sub` int(11) NOT NULL,
   `email_sub` varchar(330) NOT NULL,
   `timestamp_sub` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subscribers`
+--
+
+INSERT INTO `subscribers` (`id_sub`, `email_sub`, `timestamp_sub`) VALUES
+(1, 'armintaella15@gmail.com', '2023-04-23 11:01:57'),
+(2, 'sidiaurelius@gmail.com', '2023-04-23 14:39:29');
 
 -- --------------------------------------------------------
 
@@ -83012,6 +83041,12 @@ INSERT INTO `villages` (`id`, `district_id`, `name`) VALUES
 --
 
 --
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`ID_Admin`);
+
+--
 -- Indexes for table `districts`
 --
 ALTER TABLE `districts`
@@ -83044,9 +83079,9 @@ ALTER TABLE `regencies`
   ADD KEY `regencies_province_id_index` (`province_id`);
 
 --
--- Indexes for table `subscriber`
+-- Indexes for table `subscribers`
 --
-ALTER TABLE `subscriber`
+ALTER TABLE `subscribers`
   ADD PRIMARY KEY (`id_sub`);
 
 --
@@ -83067,6 +83102,12 @@ ALTER TABLE `villages`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `ID_Admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
@@ -83079,10 +83120,10 @@ ALTER TABLE `orang_hilang`
   MODIFY `id_hilang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `subscriber`
+-- AUTO_INCREMENT for table `subscribers`
 --
-ALTER TABLE `subscriber`
-  MODIFY `id_sub` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `subscribers`
+  MODIFY `id_sub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

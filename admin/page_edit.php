@@ -43,11 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $target_dir = "../assets/img/orang_hilang/";
         $target_file = $target_dir . basename($rename);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $newname = 'assets/img/orang_hilang/'. basename($rename);
 
         if (move_uploaded_file($foto['tmp_name'], $target_file)) {
             $stmt = $conn->prepare("UPDATE orang_hilang SET id_kota = ?, tanggal_hilang = ?, nama_lengkap = ?, tinggi =?, jenis_kelamin = ?, umur_hilang = ?, nomor_telepon =? , keterangan = ?, foto = ? 
             WHERE id_hilang = ?");
-            $berhasil =  $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $target_file, $id]);
+            $berhasil =  $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $newname, $id]);
             if ($berhasil) {
                 header('Location: tabel_hilang.php');
             } else {
