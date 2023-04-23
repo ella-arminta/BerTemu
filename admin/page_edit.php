@@ -242,6 +242,14 @@ if (isset($_POST['submit_button'])) {
                                 'background-color',
                                 'rgb(236, 108, 79)'
                             );
+                            $('#button_pencarian').css(
+                                'background-color',
+                                '#4566BA'
+                            );
+                            $('#button_selesai').css(
+                                'background-color',
+                                '#4566BA'
+                            );
                         }
                     }
                 });
@@ -262,6 +270,14 @@ if (isset($_POST['submit_button'])) {
                             'background-color',
                             'rgb(236, 108, 79)'
                         );
+                        $('#button_hilang').css(
+                                'background-color',
+                                '#4566BA'
+                            );
+                            $('#button_selesai').css(
+                                'background-color',
+                                '#4566BA'
+                            );
                     }
                 }
             });
@@ -282,6 +298,14 @@ if (isset($_POST['submit_button'])) {
                             'background-color',
                             'rgb(236, 108, 79)'
                         );
+                        $('#button_pencarian').css(
+                                'background-color',
+                                '#4566BA'
+                            );
+                            $('#button_hilang').css(
+                                'background-color',
+                                '#4566BA'
+                            );
                     }
                 }
             });
