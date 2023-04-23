@@ -52,7 +52,7 @@ if (isset($_POST['login']) && $_POST['login'] == "1")
         border-radius: 12px;
     }
     .btn {
-        background: #71CEEF !important;
+        background: #4566BA !important;
         color: white;
     }
     .outer{

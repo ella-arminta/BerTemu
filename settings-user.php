@@ -16,6 +16,7 @@ if (empty($session_login))
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<!-- custom css -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://kit.fontawesome.com/5f49f15255.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -28,9 +29,9 @@ if (empty($session_login))
             width: 100%;
             height: auto;
             overflow-y: hidden !important;
-            color: white;
+            color: #212427;
             position: relative;
-            background: #71CEEF;
+            background:  #f5f8ff;
             /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
         }
         .foto {
@@ -39,6 +40,7 @@ if (empty($session_login))
             height: auto;
         }
         .btn, .status {
+            font-size: 16px;
             background-color: #EC6C4F !important;
         }
     </style>
@@ -49,7 +51,8 @@ if (empty($session_login))
         <div class="container justify-content-center mx-auto" style="max-width: 700px;">
             <div class="mx-2">
                 <div class="row p-3 start-0">
-                    <H2>Akun Anda</H2>
+                    <i class="fa-solid fa-user fa-2xl position-absolute ml-2 mt-3" style="color: #202327;"></i>
+                    <H2 class="ml-5 pl-2">Akun Anda</H2>
                 </div>
                 <div class="content row p-3 mb-2 mx-auto">
                     <div class="col-lg-4 col-12 p-2">

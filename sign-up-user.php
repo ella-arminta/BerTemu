@@ -96,6 +96,7 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
     <title>Sign-up</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://kit.fontawesome.com/5f49f15255.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -148,7 +149,7 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
             width: 100%;
         }
         .btn {
-            background: #71CEEF !important;
+            background: #4566BA !important;
             color: white;
         }
     </style>
@@ -199,7 +200,8 @@ if (isset($_POST['signup']) && $_POST['signup'] == "1")
     <div class="container-hp">
         <div class="mx-auto p-5">
             <div class="row start-0">
-                <H2>Buat Akun</H2>
+                    <i class="fa-solid fa-user fa-2xl position-absolute ml-2 mt-3" style="color: #202327;"></i>
+                    <H2 class="ml-5 pl-2">Buat Akun</H2>
             </div>
             <div class="row d-flex p-2 justify-content-center">
                 <!-- form -->
