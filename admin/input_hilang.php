@@ -15,12 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $rename = time() . '-' . basename($_FILES["foto"]["name"]);
     $target_dir = "../assets/img/orang_hilang/";
     $target_file = $target_dir . basename($rename);
+    $newname = 'assets/img/orang_hilang/'.basename($rename);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     if (move_uploaded_file($foto['tmp_name'], $target_file)) {
         $stmt = $conn->prepare("INSERT INTO orang_hilang (id_kota, tanggal_hilang, nama_lengkap, tinggi, jenis_kelamin, umur_hilang, nomor_telepon, keterangan, foto) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $target_file]);
+        $stmt->execute([$id_kota, $tanggal_hilang, $nama_lengkap, $tinggi, $jenis_kelamin, $umur_hilang, $nomor_telepon, $keterangan, $newname]);
     }
 }
 
@@ -108,7 +109,7 @@ if(isset($_POST['submit_button'])){
                 <!-- <input type="text" class="form-control" id="id_kota" name="id_kota"> -->
                 <select class="form-control" name="id_kota" id="id_kota">
                     <?php foreach ($result as $row) { ?>
-                        <option value="<?= $row['province_id'] ?>"><?= $row['name'] ?></option>
+                        <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
                     <?php } ?>
                 </select> <br>
 

@@ -284,7 +284,7 @@
                                 <div>`+formatDate(thisrow.tanggal_hilang)+`</div>
                                 <div class="row">
                                     <div class="col-5">
-                                        <img src="assets/img/orang_hilang/`+thisrow.foto+`" alt="">
+                                        <img src="`+thisrow.foto+`" alt="">
                                     </div>
                                     <div class="col-7">
                                         <div><b>`+thisrow.nama_lengkap+`</b></div>
