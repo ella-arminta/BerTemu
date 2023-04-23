@@ -42,7 +42,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home User</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -51,12 +50,13 @@
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e52db3bf8a.js" crossorigin="anonymous"></script>
     <!-- customer css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="css/explore.css">
 </head>
 <body>
     <div class="container-hp">
         <div style="height:60px;display:flex;align-items:center;margin-left:20px;">
-        <button onclick="window.location.href='explore.php'" type="Button" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;">
+        <button onclick="window.location.href='explore.php'" type="Button" class="button1" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;">
         <i class="fa-solid fa-arrow-left"></i> BACK </button>
         </div>
         <div class="card-container">
@@ -107,9 +107,9 @@
         </div>
         <div style="height:22px;width:100%;"></div>
         <?php if(!isset($_SESSION['login'])):?>
-        <button type="Button" class="button1" onclick="window.location.href= 'login-user.php'" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;width:80px;display:block;float:right;margin-right:5%;">Log-in</button>
+        <button type="Button" class="button1" onclick="window.location.href= 'login-user.php'" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;width:80px;display:block;float:right;margin-right:5%;">Log-in</button>
         <?php else: ?>
-        <button type="Button" onclick="sendKomentar()" class="button1" style="background-color : rgb(57,79,110); color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;width:80px;display:block;float:right;margin-right:5%;">Send</button>
+        <button type="Button" onclick="sendKomentar()" class="button1" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT';border:none;border-radius:20px;width:80px;display:block;float:right;margin-right:5%;">Send</button>
         <?php endif; ?>
         <div style="height:26px;width:100%;"></div>
         <div style="height:82px;width:100%;"></div>

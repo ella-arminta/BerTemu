@@ -1,12 +1,17 @@
 /* css template */
+:root{
+    --black : #212427;
+}
 body{
     width: 100%;
     overflow: auto;
     margin:auto;
     min-height: 100vh;
-    background-color: #ECF6FC !important;
+    /* background-color: #ECF6FC !important; */
+    background-color: #a5acb9 !important;
     font-size: 20px;
     transition: 0.3s;
+    color:var(--black);
 }
 .container-hp{
     margin: auto;
