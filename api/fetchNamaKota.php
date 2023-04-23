@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $berhasil = $stmt->execute([$id]);
     if($berhasil){
         $nama = $stmt->fetch();
-        $nama = $nama['name'];
+        $nama = strtolower($nama['name']);
         echo json_encode([$nama,$_POST['id_hilang']]);
     }else{
         echo 'error';

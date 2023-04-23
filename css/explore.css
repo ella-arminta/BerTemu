@@ -40,7 +40,7 @@
     width: 90%;
     border-radius: 15px;
     min-height: 25vh;
-    padding-bottom: 10px;
+    padding-bottom: 34px;
     margin-bottom: 30px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -52,7 +52,7 @@
     margin-bottom:10px;
     font-size: 16px;
 }
-.mycard h1{
+.mycard > h1{
     font-size: 16px;
     margin-bottom:0;
 }
@@ -89,6 +89,11 @@ img{
     display: flex;
     justify-content: center;
     flex-direction: column;
+    gap: 10px;
+}
+.col-7 > div:nth-child(1) > b{
+    font-size: 20px;
+    text-transform: capitalize;
 }
 .mycard{
     cursor: pointer;
@@ -184,4 +189,7 @@ img{
   }
   .filter{
     cursor: pointer;
+  }
+  .kotaVal{
+    text-transform: capitalize;
   }

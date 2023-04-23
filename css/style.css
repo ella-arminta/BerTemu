@@ -1,6 +1,8 @@
 /* css template */
 :root{
     --black : #212427;
+    --blue-secondary : #f5f8ff;
+    --blue-primary : #4566BA;
 }
 body{
     width: 100%;
@@ -9,7 +11,7 @@ body{
     min-height: 100vh;
     /* background-color: #ECF6FC !important; */
     background-color: #a5acb9 !important;
-    font-size: 20px;
+    font-size: 16px;
     transition: 0.3s;
     color:var(--black);
 }
@@ -29,4 +31,26 @@ body{
     max-width: 780px;
     position: fixed;
     background: #4566BA !important;
+}
+.btn-primary {
+    --bs-btn-bg: #4566BA !important;
+}
+.myloader{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #4566bab9;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity .5s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.myloader.show{
+    opacity: 1;
+    z-index: 1100;
 }

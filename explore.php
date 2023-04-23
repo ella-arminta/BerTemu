@@ -106,7 +106,7 @@
                         <img src="assets/img/orang_hilang/dummy1.jpg" alt="">
                     </div>
                     <div class="col-7">
-                        <h1>Nicholas Suhendar</h1>
+                        <div><b>Nicholas Suhendar</b></div>
                         <div>Surabaya</div>
                         <div style="display:flex;align-items:center;">
                             <div style="margin-right:15px;">Laki-Laki</div>
@@ -256,7 +256,7 @@
                                         <img src="assets/img/orang_hilang/`+thisrow.foto+`" alt="">
                                     </div>
                                     <div class="col-7">
-                                        <h1>`+thisrow.nama_lengkap+`</h1>
+                                        <div><b>`+thisrow.nama_lengkap+`</b></div>
                                         <div class='kotaVal'>`+mykota+`</div>
                                         <div>`+thisrow.umur_hilang+` tahun</div>
                                         <div style="display:flex;align-items:center;">
@@ -264,6 +264,28 @@
                                             <div>`+thisrow.tinggi+` cm</div>
                                         </div>
                                         <div style="cursor:pointer;">`+thisrow.nomor_telepon+` <i class="fa-solid fa-copy"></i></div>
+                                        <div></div>
+                            `;
+                            if(thisrow.status == 'pencarian'){
+                                mycard += `
+                                <div>
+                                <button type="button" class="btn btn-outline-warning" style="float:right;width:100px;">Pencarian</button>
+                                </div>
+                                `
+                            }else if(thisrow.status == 'selesai'){
+                                mycard += `
+                                <div>
+                                <button type="button" class="btn btn-outline-success" style="float:right;width:100px;">Selesai</button>
+                                </div>
+                                `
+                            }else{
+                                mycard += `
+                                <div>
+                                <button type="button" class="btn btn-outline-danger" style="float:right;width:100px;">Hilang</button>
+                                </div>
+                                `;
+                            }
+                            mycard += `
                                     </div>
                                 </div>
                             </div>
