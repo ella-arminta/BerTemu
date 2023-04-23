@@ -50,7 +50,7 @@ li:hover {
             <a class="nav-link" href="explore.php"><img src="assets/explore-icon.png" class="icon"></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"><img src="assets/chat-icon.png" class="icon"></a>
+            <a class="nav-link" href="riwayat.php"><img src="assets/chat-icon.png" class="icon"></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="settings-user.php"><img src="assets/setting-icon.png" class="icon"></a>
@@ -70,7 +70,7 @@ li:hover {
 
     home = ['index-user.php'];
     explore = ['explore.php'];
-    chat = [];
+    chat = ['riwayat.php'];
     settings = ['settings-user.php', 'login-user.php', 'sign-up-user.php'];
     console.log(url)
     if(home.includes(url)){

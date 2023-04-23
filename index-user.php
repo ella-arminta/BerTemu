@@ -53,6 +53,23 @@
             margin-left: 10px;;
         }
     }
+    .mynavbar{
+        display:flex;
+        justify-content:space-between !important;
+        align-items:center;
+        width:100%;
+    }
+    .navbar.mynavbar{
+        padding: 0px 5%;
+    }
+    .jarak-kiri{
+        visibility:hidden;
+    }
+    @media(max-width:439px){
+        .jarak-kiri{
+            display:none;
+        }
+    }
 </style>
 <body>
     <div class="container-hp">
@@ -62,26 +79,18 @@
         <div class="pembatas-navbar"></div>
 
         <!-- navbar top -->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0 my-0 mx-auto">
-            <div>
-            <ul class="navbar-nav mx-auto">
-                    <a class="nav-link py-0 my-0" href="#"><img src="assets/logo-horizontal.png" style="height: 80px"></a>
-                    <!-- gagal top right -->
-                    <li class="nav-item" data-bs-toggle="modal" data-bs-target="#subscribeModal">
-                        <a class="nav-link py-0 my-0" href="#"><img src="assets/bell-icon.png" class="icon" style="height: 60px; width: auto;"></a>
-                    </li>
-                </ul>
-                <!-- <ul class="navbar-nav position-absolute top-0 end-0"> 
-                    
-                </ul> -->
-        <nav class="navbar fixed-top justify-content-center py-0 my-0 mx-auto">
-            <div class="container-fluid">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0 my-0 mx-auto py-0 my-0 mx-auto mynavbar">
+            <ul class="navbar-nav mynavbar">
                 <!-- gagal top right -->
-                <a class="navbar-brand py-0 my-0 position-absolute" id="bell" href="#"><i class="fa-solid fa-bell fa-2xl" style="color: #ffffff;"></i></a>
-
+                <li class="nav-item jarak-kiri" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                    <a class="navbar-brand py-0 my-0" id="bell" href="#"><i class="fa-solid fa-bell fa-2xl" style="color: #ffffff;"></i></a>
+                </li>
                 <a class="nav-link py-0 my-0 mx-auto" href="#"><img src="assets/logo-horizontal.png" style="height: 80px"></a>
-            </div>
-                
+                <!-- gagal top right -->
+                <li class="nav-item" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                    <a class="navbar-brand py-0 my-0" id="bell" href="#"><i class="fa-solid fa-bell fa-2xl" style="color: #ffffff;"></i></a>
+                </li>
+            </ul>                
         </nav>
         
         <div class="container justify-content-center" style="max-width: 700px;">
@@ -105,26 +114,26 @@
         <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" >
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="subscribeModalLabel">Notifikasi</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <p>Ijinkan kami mengirimkan notifikasi email berisi pemberitahuan kondisi terbaru orang yang hilang.</p>
-                    <div class="inputan">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required placeholder="example@gmail.com">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="subscribeModalLabel">Notifikasi</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <p>Ijinkan kami mengirimkan notifikasi email berisi pemberitahuan kondisi terbaru orang yang hilang.</p>
+                        <div class="inputan">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required placeholder="example@gmail.com">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-submit btn-primary" onclick="submitEmail()">Submit</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-submit btn-primary" onclick="submitEmail()">Submit</button>
+                    </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
     <div class="myloader">
         <div class="spinner-border text-light" role="status">

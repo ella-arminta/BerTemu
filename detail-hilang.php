@@ -128,9 +128,9 @@
         </div>
         <div style="height:22px;width:100%;"></div>
         <?php if(!isset($_SESSION['login'])):?>
-        <button type="Button" class="button1 btn" onclick="window.location.href= 'login-user.php'" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT';border:none;width:80px;display:block;float:right;margin-right:5%;">Log-in</button>
+        <button type="Button" class="button1 btn" onclick="window.location.href= 'login-user.php'" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT';border:none;width:80px;display:block;float:right;margin-right:5%;margin-bottom:100px;">Log-in</button>
         <?php else: ?>
-        <button type="Button" onclick="sendKomentar()" class="button1 btn" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT';border:none;width:80px;display:block;float:right;margin-right:5%;">Send</button>
+        <button type="Button" onclick="sendKomentar()" class="button1 btn" style="background-color : #4566BA; color:white; font-family:'Gill Sans MT';border:none;width:80px;display:block;float:right;margin-right:5%;margin-bottom:100px;">Send</button>
         <?php endif; ?>
         <div style="height:26px;width:100%;"></div>
         <div style="height:82px;width:100%;"></div>
